@@ -6,5 +6,5 @@ VALUES
 ('Alex', 'Brown', 'alexbrown@hotmail.com', '789'),
 ('Lucy', 'Glaze', 'lucyg@gmail.com', 'password');
 
-SELECT * FROM users;
+
 
