@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Main Page</title>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+</head>
+
+<body>
+  <%- include('./partials/_header') %>
+    <main>
+      <div class="checkout_list">
+        <img src="" alt="item_img">
+        <h3>product name</h3>
+        <p>product price</p>
+      </div>
+      <div>
+        <form action="/thank_you" method="POST">
+          <p>total price</p>
+          <input type="text" name="address" placeholder="Enter your address">
+          <p>ETA</p>
+          <div>
+            <a href="index.ejs">HOME</a>
+            <button>CHECKOUT</button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <footer>
+      some info
+    </footer>
+</body>
+
+</html>
