@@ -7,4 +7,12 @@ const getUsers = () => {
     });
 };
 
-module.exports = { getUsers };
+// *** test run ***
+const userTest = () => {
+  return db.query('SELECT first_name FROM users LIMIT 1;')
+    .then(data => {
+      return data.rows;
+    });
+};
+
+module.exports = { getUsers, userTest };
