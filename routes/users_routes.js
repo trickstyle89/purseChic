@@ -14,13 +14,29 @@ const userQueries = require('../db/queries/users_queries');
 
 router.get('/', (req, res) => {
   userQueries.userTest()
-    .then((test) => {
+    .then((name) => {
       // res.json(test); just sends a JSON that overwrites everything on EJS.
-      res.render('index', { user: test });
+      res.render('index', { user: name });
     })
     .catch((error) => {
       console.error(error);
       res.status(500).send('Error retrieving test data');
+    });
+});
+
+router.get('/register', (req, res) => {
+  res.render('register');
+});
+
+router.post('/register', (req, res) => {
+  userQueries.addUser(req.body) //because it is directly from EJS names.
+  // userQueries.addUser(req.body) // req.params for websites.
+    .then((newUser) => {
+      res.send(newUser);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send('Error registering new user data!');
     });
 });
 
