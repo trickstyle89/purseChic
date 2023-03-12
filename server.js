@@ -36,6 +36,7 @@ const productsRouter = require('./routes/products_routes');
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/my_listing', productsRouter);
+app.use('/register', usersRouter)
 
 // *** working on this. First param is route and then back to the router files.
 // *** whatever route you use here will be stripped on the other end.

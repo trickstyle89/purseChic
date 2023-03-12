@@ -18,6 +18,22 @@ const userTest = () => {
     });
 };
 
-userTest();
+// userTest();
 
-module.exports = { getUsers, userTest };
+const addUser =  function(user) {
+  return pool
+  .query(`
+  INSERT INTO users (first_name, last_name, password, email)
+  VALUES ($1, $2, $3, $4)
+  RETURNING *;
+  `, [users.first_name, users.last_name, users.email, users.password]
+)
+.then((result) => {
+  return result.rows[0];
+})
+.catch((err) => {
+  console.log(err.message);
+});
+};
+
+module.exports = { getUsers, userTest, addUser };
