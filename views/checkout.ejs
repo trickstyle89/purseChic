@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Login Page</title>
+  <title>Main Page</title>
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,12 +20,22 @@
 <body>
   <%- include('./partials/_header') %>
     <main>
-      <img src="" alt="body img">
-      <form action="/register" method="POST" class="register_form">
-        <input type="text" name="username" placeholder="username" minlength="3" maxlength="14" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="password" required>
-      </form>
+      <div class="checkout_list">
+        <img src="" alt="item_img">
+        <h3>product name</h3>
+        <p>product price</p>
+      </div>
+      <div>
+        <form action="/thank_you" method="POST">
+          <p>total price</p>
+          <input type="text" name="address" placeholder="Enter your address">
+          <p>ETA</p>
+          <div>
+            <a href="index.ejs">HOME</a>
+            <button>CHECKOUT</button>
+          </div>
+        </form>
+      </div>
     </main>
     <footer>
       some info
