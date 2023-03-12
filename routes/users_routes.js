@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/register', (req, res) => {
-  res.render('register');
+  res.render('views/register.ejs');
 });
 
 router.post('/register', (req, res) => {
@@ -38,6 +38,10 @@ router.post('/register', (req, res) => {
       console.error(error);
       res.status(500).send('Error registering new user data!');
     });
+});
+
+router.get('/thank_you', (req, res) => {
+  res.render('thank_you.ejs');
 });
 
 module.exports = router;
