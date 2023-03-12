@@ -15,6 +15,7 @@ const userQueries = require('../db/queries/users_queries');
 router.get('/', (req, res) => {
   userQueries.userTest()
     .then((test) => {
+      // res.json(test); just sends a JSON that overwrites everything on EJS.
       res.render('index', { user: test });
     })
     .catch((error) => {
