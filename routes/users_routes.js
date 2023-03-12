@@ -7,10 +7,20 @@
 
 const express = require('express');
 const router  = express.Router();
-const userTest = require('../db/queries/product_query');
+
+//userQueries is just a name for ALL the imported helpers
+const userQueries = require('../db/queries/users_queries');
+
 
 router.get('/', (req, res) => {
-  res.render('users');
+  userQueries.userTest()
+    .then((test) => {
+      res.render('index', { user: test });
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send('Error retrieving test data');
+    });
 });
 
 module.exports = router;

@@ -1,5 +1,3 @@
-const userTest = require('../db/queries/product_query');
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +21,7 @@ const userTest = require('../db/queries/product_query');
   <%- include('./partials/_header') %>
     <main>
       <img src="/images/testImage.jpeg" alt="body_img" />
+      <p>First Name: <%= user.first_name[0] %></p>
       <div class="collection-button">ALL COLLECTION</div>
     </main>
     <footer>
