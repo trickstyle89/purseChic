@@ -1,0 +1,31 @@
+.main_content {
+  width: 100%;
+}
+
+.img-text img {
+  width: 100%;
+  position: relative;
+  height: 99.6vh;
+  object-fit: cover;
+}
+
+.img-text .collection-button {
+  position: absolute;
+  top: 80px;
+  right: 15px;
+  font-weight: bold;
+  text-align: right;
+  font-size: 30px;
+}
+
+.collection-button {
+  width: 95%;
+  height: 90%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column-reverse;
+}
+
+.collection-button p {
+  font-size: 4rem;
+}
