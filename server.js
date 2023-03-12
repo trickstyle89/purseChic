@@ -28,16 +28,21 @@ app.use(express.static('public'));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const userApiRoutes = require('./routes/users-api');
-const productRouters = require('./routes/users_routes'); // working on this
-const usersRoutes = require('./routes/users_routes');
+const messagesRouter = require('./routes/message_routes');
+const usersRouter = require('./routes/users_routes'); // working on this
+const productsRouter = require('./routes/products_routes');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-app.use('/api/users', userApiRoutes);
-app.use('/', productRouters);  // *** working on this. First param is route and then back to the router files.
-app.use('/users', usersRoutes);
+app.use('/my_listing', productsRouter);
+
+// *** working on this. First param is route and then back to the router files.
+// *** whatever route you use here will be stripped on the other end.
+// watch Andy's video at 14 minutes to understand this part.
+app.use('/', usersRouter);
+app.use('/main', productsRouter)
+app.use('/users', messagesRouter);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
