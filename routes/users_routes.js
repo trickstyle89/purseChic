@@ -32,7 +32,7 @@ router.post('/register', (req, res) => {
   userQueries.addUser(req.body) //because it is directly from EJS names.
   // userQueries.addUser(req.body) // req.params for websites.
     .then((newUser) => {
-      res.send(newUser);
+      res.redirect('/main') // is that where we want to send it?
     })
     .catch((error) => {
       console.error(error);
