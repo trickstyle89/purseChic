@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/register', (req, res) => {
-  res.render('views/register.ejs');
+  res.render('register.ejs');
 });
 
 router.post('/register', (req, res) => {
