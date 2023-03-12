@@ -17,5 +17,6 @@ module.exports = { getProducts };
 // console to see if this works at all Confirmed.
 // export module and then import into server.js to use a helper
 // then put this in server.js to see if that works using as a callback in the app(). Console from there
-// the put the exported OBJECT into EJS via <%
-// then maybe include AJAX for more dynamic site.
+// if that works then export to appropriate file under ROUTES
+// take the exported OBJECT from ROUTES and inject into EJS via <li><%= user.first_name %></li>
+// then maybe include AJAX for more dynamic site after this step but only as a stretch.
