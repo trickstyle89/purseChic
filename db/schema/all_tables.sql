@@ -20,7 +20,7 @@ CREATE TABLE products (
   price INTEGER  NOT NULL DEFAULT 0,
   description VARCHAR(255) NOT NULL,
   product_photo VARCHAR(255) NOT NULL,
-  posted_date TIMESTAMP,
+  posted_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   sold BOOLEAN NOT NULL DEFAULT FALSE
 );
 
@@ -41,5 +41,5 @@ CREATE TABLE messages (
   sender_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   conversation_id INTEGER REFERENCES conversations(id) ON DELETE CASCADE,
   message_content VARCHAR(255) NOT NULL,
-  created_on TIMESTAMP DEFAULT NULL
+  created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
