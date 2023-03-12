@@ -7,9 +7,10 @@
 
 const express = require('express');
 const router  = express.Router();
+const userTest = require('../db/queries/product_query');
 
 router.get('/', (req, res) => {
   res.render('users');
-}); 
+});
 
 module.exports = router;

@@ -1,5 +1,9 @@
 // PG database client/connection setup
 const { Pool } = require('pg');
+// const Client = pg.client;
+
+// Pool is load balancing
+// Client for individuals
 
 const dbParams = {
   host: 'localhost',

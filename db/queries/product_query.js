@@ -6,14 +6,23 @@ const db = require('../connection');
 const getProducts = () => {
   return db.query('SELECT * FROM products;')
     .then(data => {
-      console.log('products line 9', data.rows)
+      console.log('products line 9 from products_query.js', data.rows)
       return data.rows;
     });
 };
 
-module.exports = { getProducts };
+const getProductsImage = () => {
+  return db.query('SELECT product_photo FROM products;')
+    .then(data => {
+      console.log('products line 17 from products_query.js', data.rows)
+      return data.rows;
+      // return data.rows[0]; [0] for the happy path to take the array out and just get the object.
+    });
+};
 
-// be sure to run the seed file.
+module.exports = { getProducts, getProductsImage };
+
+// be sure to run the seed file to populate you DB
 // console to see if this works at all Confirmed with CONSOLE.LOG on line 9.
 // export module and then import into server.js to use a helper
 // then put this in server.js to see if that works using as a callback in the app(). Console from there
