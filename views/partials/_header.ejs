@@ -1,19 +1,54 @@
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul {
+    list-style-type: none;
+    display: flex;
+  }
+
+  header {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    background-color: silver;
+    z-index: 9999;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .left-nav li,
+  .right-nav li,
+  i {
+    margin: 20px;
+  }
+
+  h2 {
+    padding: 10px 100px 0 0;
+  }
+</style>
+
 <header>
   <nav>
     <div class="left-nav">
       <ul>
-        <li>home icon</li>
+        <i class="fa-solid fa-house"></i>
         <li>MY LISTING</li>
         <li>NAME</li>
         <li>NAME</li>
       </ul>
     </div>
     <h2>STORE_NAME</h2>
-    <div class="divright_nav">
+    <div class="right-nav">
       <ul>
         <li>Login</li>
         <li>Sign up</li>
-        <li>checkout icon</li>
+        <i class="fa-sharp fa-solid fa-bag-shopping"></i>
       </ul>
     </div>
   </nav>
