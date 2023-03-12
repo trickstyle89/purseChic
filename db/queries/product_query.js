@@ -6,7 +6,7 @@ const db = require('../connection');
 const getProducts = () => {
   return db.query('SELECT * FROM products;')
     .then(data => {
-      console.log('products line 9', data.rows);
+      console.log('products line 9', data.rows)
       return data.rows;
     });
 };
