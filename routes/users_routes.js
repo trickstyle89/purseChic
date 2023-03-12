@@ -24,6 +24,10 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/register', (req, res) => {
+  res.render('register');
+});
+
 router.post('/register', (req, res) => {
   userQueries.addUser(req.body) //because it is directly from EJS names.
   // userQueries.addUser(req.body) // req.params for websites.
