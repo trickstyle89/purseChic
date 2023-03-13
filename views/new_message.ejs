@@ -21,29 +21,11 @@
 <body>
   <%- include('./partials/_header') %>
     <main>
-      <div class="two_products">
-        <div>
-          <div>
-            <img src="" alt="product_img">
-            <i>Edit icon</i>
-            <i>Delete icon</i>
-          </div>
-          <h2>title</h2>
-          <h3>description</h3>
-          <p>price</p>
-        </div>
-        <div>
-          <div>
-            <img src="" alt="product_img">
-            <i>Edit icon</i>
-            <i>Delete icon</i>
-          </div>
-          <h2>title</h2>
-          <h3>description</h3>
-          <p>price</p>
-        </div>
-      </div>
-      <div class="new_listing">same size as the img border but has + sign to add new listing</div>
+      <form action="/new_messages" method="POST">
+        <p>To: name of the user</p>
+        <textarea name="new-message" placeholder="Enter your message"></textarea>
+        <button>Send</button>
+      </form>
     </main>
     <footer>
       some info
