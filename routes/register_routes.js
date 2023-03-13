@@ -8,8 +8,9 @@ router.get('/', (req, res) => {
   res.render('register');
 });
 
-router.post('/', (req, res) => {
-  userQueries.addUser(req.body) //because it is directly from EJS names.
+router.post('/', (req, res) => { //not really sure if I need register in this portion
+  const { first_name, last_name, email, password } = req.body;
+  userQueries.addUser({ first_name, last_name, email, password }) //because it is directly from EJS names.
     // userQueries.addUser(req.body) // req.params for websites.
     .then((newUser) => {
       res.redirect('/main') // is that where we want to send it?

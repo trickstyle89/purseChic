@@ -1,4 +1,5 @@
 const db = require('../connection');
+const { Pool } = require('pg');
 
 const getUsers = () => {
   return db.query('SELECT * FROM users;')
@@ -20,10 +21,9 @@ const userTest = () => {
 
 // userTest();
 
-const addUser = function (user) {
-  return pool
-    .query(`
-  INSERT INTO users (first_name, last_name, password, email)
+const addUser = function (users) {
+  return db.query(`
+  INSERT INTO users (first_name, last_name, email, password)
   VALUES ($1, $2, $3, $4)
   RETURNING *;
   `, [users.first_name, users.last_name, users.email, users.password]
