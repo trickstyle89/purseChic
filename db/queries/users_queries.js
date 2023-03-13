@@ -37,12 +37,12 @@ const addUser = function (users) {
 };
 
 
-const checkUser = function (email, password) {
+const checkUser = function (users) {
   return db.query(`
   SELECT *
   FROM users
   WHERE email = $1 AND password = $2;
-  `, [email, password]
+  `, [users.email, users.password]
     )
     .then((result) => {
       return result.rows[0];
