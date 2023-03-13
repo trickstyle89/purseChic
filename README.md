@@ -1,6 +1,6 @@
 # purschic
 
-> purschic is a full stack web application build with [Node.js](https://nodejs.org/en/) and [Express.js](https://expressjs.com/) where users can browse and shop from a collection of unique luxury handbags. Feel free to browse our repository and learn more about how we've built our online store.
+> purschic is a full stack web application build with [Node.js](https://nodejs.org/en/) and [Express.js](https://expressjs.com/). On purshic, users can browse and shop from a collection of unique luxury handbags. Feel free to browse our repository and learn more about how we've built our online store.
 
 ## Product Demo
 
@@ -8,14 +8,63 @@ PICTURES + VIDEO WILL GO HERE
 
 ## Getting Started
 
-1. Fork repo, and clone a copy into your dev machine.
+1. Connect to postgres server.
 
-2. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
-3. Update the .env file with your correct local information
-4. Use the `npm i` command to install dependencies.
-5. Fix to binaries for sass: `npm rebuild node-sass`
-6. Reset database: `npm run db:reset`
-7. Use the `npm run local` command to start your local web server.
+```sh
+psql -U vagrant -d template1
+```
+
+2. In your terminal, create the required objects in the database.
+
+```sh
+CREATE ROLE labber WITH LOGIN password 'labber';
+CREATE DATABASE midterm OWNER labber;
+```
+
+2. Clone a copy of this repository and move to the correct directory.
+
+```sh
+$ git clone https://github.com/mrludovicc/store_name.git
+$ cd store_name
+```
+
+5. Create an .env file with your correct local information. You may use `.env.example` as a reference: `cp .env.example .env`.
+
+```sh
+DB_HOST=localhost
+DB_USER=labber
+DB_PASS=labber
+DB_NAME=midterm
+# Uncomment and set to true for Heroku
+# DB_SSL=true if heroku
+DB_PORT=5432
+
+```
+
+6. Install dependencies.
+
+```sh
+$ npm install
+```
+
+3. Fix to binaries for sass.
+
+```sh
+npm rebuild node-sass
+```
+
+4. Reset database
+
+```sh
+npm run db:reset
+```
+
+5. Run your local web server.
+
+```sh
+$ npm run local
+```
+
 8. Visit http://localhost:8080 in your browser.
 
 - Note: nodemon is used, so you should not have to restart your server
