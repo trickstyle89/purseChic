@@ -31,6 +31,7 @@ app.use(express.static('public'));
 const messagesRouter = require('./routes/message_routes');
 const usersRouter = require('./routes/users_routes'); // working on this
 // CREATE NEW FILE TO EACH ROUTE AND CONNECT IT USING APP.USE
+const addProductsRouter = require('./routes/add_listing_routes');
 const registerRouter = require('./routes/register_routes');
 const thankyouRouter = require('./routes/thank_you_routes')
 const productsRouter = require('./routes/products_routes');
@@ -38,9 +39,11 @@ const productsRouter = require('./routes/products_routes');
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
+
 app.use('/my_listing', productsRouter);
 app.use('/register', registerRouter);
 app.use('/thank_you', thankyouRouter);
+app.use('/add_listing', addProductsRouter);
 
 // *** working on this. First param is route and then back to the router files.
 // *** whatever route you use here will be stripped on the other end.

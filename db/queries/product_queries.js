@@ -20,7 +20,22 @@ const getProductsImage = () => {
     });
 };
 
-module.exports = { getProducts, getProductsImage };
+const addProduct = function (products) {
+  return db.query(`
+  INSERT INTO products (title, price, description, product_photo, sold, seller_id)
+  VALUES ($1, $2, $3, $4, $5, $6)
+  RETURNING *;
+  `, [products.title, products.price, products.description , products.product_photo, products.sold, products.seller_id]
+    )
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+module.exports = { getProducts, getProductsImage, addProduct };
 
 // be sure to run the seed file to populate you DB
 // console to see if this works at all Confirmed with CONSOLE.LOG on line 9.
