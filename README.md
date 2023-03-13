@@ -50,13 +50,13 @@ $ npm install
 3. Fix to binaries for sass.
 
 ```sh
-npm rebuild node-sass
+$ npm rebuild node-sass
 ```
 
 4. Reset database
 
 ```sh
-npm run db:reset
+$ npm run db:reset
 ```
 
 5. Run your local web server.
