@@ -8,5 +8,5 @@ CREATE TABLE products (
   description TEXT NOT NULL,
   product_photo VARCHAR(255) NOT NULL,
   posted_date TIMESTAMP,
-  sold BOOLEAN NOT NULL DEFAULT FALSE
+  sold BOOLEAN DEFAULT FALSE
 );

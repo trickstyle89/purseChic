@@ -28,11 +28,12 @@
       <img src="" alt="body img">
       <div>
         <form action="/add_listing" method="POST" class="add_listing_form">
-          <input type="text" name="product_name" placeholder="Product name" required>
+          <input type="text" name="title" placeholder="Product name" required>
           <textarea name="description" placeholder="Add description to your product" required></textarea>
-          <input type="number" name="product_price" placeholder="Price" required>
-          <input type="image" name="product image" placeholder="Insert a product image" required>
-          <button>Post!</button>
+          <input type="number" name="price" placeholder="Price" required>
+          <input type="name" name="product_photo" placeholder="Insert a product URL link" required>
+          <input type="number" name="product_photo" placeholder="default seller_id is 1" required>
+          <button>Add your item!</button>
         </form>
       </div>
     </main>

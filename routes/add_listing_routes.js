@@ -9,8 +9,8 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const { title, price, description, product_photo, sold, seller_id } = req.body;
-  productQueries.addProduct({ title, price, description, product_photo, sold, seller_id }) //because it is directly from EJS names.
+  const { title, price, description, product_photo, seller_id } = req.body;
+  productQueries.addProduct({ title, price, description, product_photo, seller_id }) //because it is directly from EJS names.
     .then((newproduct) => {
       res.redirect('/main')
     })
