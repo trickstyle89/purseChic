@@ -49,7 +49,7 @@ app.use('/add_listing', addProductsRouter);
 // *** whatever route you use here will be stripped on the other end.
 // watch Andy's video at 14 minutes to understand this part.
 app.use('/', usersRouter);
-app.use('/main', productsRouter)
+app.use('/main', productsRouter);
 app.use('/users', messagesRouter);
 // Note: mount other resources here, using the same pattern above
 
