@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Users</title>
 
-<head>
-  <title>Users</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Styles -->
+    <link rel="stylesheet" href="/styles/reset.css" />
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="/styles/reset.css">
+    <!-- fontAwesome -->
+    <script
+      src="https://kit.fontawesome.com/0721b3d140.js"
+      crossorigin="anonymous"
+    ></script>
 
-  <!-- fontAwesome -->
-  <script src="https://kit.fontawesome.com/0721b3d140.js" crossorigin="anonymous"></script>
+    <script src="/vendor/jquery-3.0.0.js"></script>
+    <script defer src="/scripts/users.js"></script>
+  </head>
 
-  <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/users.js"></script>
-</head>
-
-<body>
-  <h1>Users</h1>
-  <button id="fetch-users">Fetch Users via AJAX</button>
-  <ul id="users"></ul>
-</body>
-
+  <body>
+    <h1>Users</h1>
+    <button id="fetch-users">Fetch Users via AJAX</button>
+    <ul id="users"></ul>
+  </body>
 </html>
