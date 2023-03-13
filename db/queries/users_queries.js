@@ -36,4 +36,20 @@ const addUser = function (users) {
     });
 };
 
-module.exports = { getUsers, userTest, addUser };
+
+const checkUser = function (email, password) {
+  return db.query(`
+  SELECT *
+  FROM users
+  WHERE email = $1 AND password = $2;
+  `, [email, password]
+    )
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+module.exports = { getUsers, userTest, addUser, checkUser };

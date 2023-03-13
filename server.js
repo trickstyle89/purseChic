@@ -35,11 +35,13 @@ const addProductsRouter = require('./routes/add_listing_routes');
 const registerRouter = require('./routes/register_routes');
 const thankyouRouter = require('./routes/thank_you_routes')
 const productsRouter = require('./routes/products_routes');
+const loginRouter = require('./routes/login_routes')
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 
+app.use('/login', loginRouter);
 app.use('/my_listing', productsRouter);
 app.use('/register', registerRouter);
 app.use('/thank_you', thankyouRouter);
