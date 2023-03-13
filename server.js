@@ -42,16 +42,16 @@ const loginRouter = require('./routes/login_routes')
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 
 app.use('/login', loginRouter);
-app.use('/my_listing', productsRouter);
+app.use('/mylistings', productsRouter);
 app.use('/register', registerRouter);
-app.use('/thank_you', thankyouRouter);
-app.use('/add_listing', addProductsRouter);
+app.use('/thankyou', thankyouRouter);
+app.use('/newlisting', addProductsRouter);
 
 // *** working on this. First param is route and then back to the router files.
 // *** whatever route you use here will be stripped on the other end.
 // watch Andy's video at 14 minutes to understand this part.
 app.use('/', usersRouter);
-app.use('/main', productsRouter);
+app.use('/collection', productsRouter);
 app.use('/users', messagesRouter);
 // Note: mount other resources here, using the same pattern above
 
