@@ -22,10 +22,10 @@ const getProductsImage = () => {
 
 const addProduct = function (products) {
   return db.query(`
-  INSERT INTO products (title, price, description, product_photo, sold, seller_id)
-  VALUES ($1, $2, $3, $4, $5, $6)
+  INSERT INTO products (title, price, description, product_photo, seller_id)
+  VALUES ($1, $2, $3, $4, $5)
   RETURNING *;
-  `, [products.title, products.price, products.description , products.product_photo, products.sold, products.seller_id]
+  `, [products.title, products.price, products.description , products.product_photo, products.seller_id]
     )
     .then((result) => {
       return result.rows[0];
