@@ -12,13 +12,13 @@ router.post('/', (req, res) => {
   const { email, password } = req.body;
   userQueries.checkUser({ email, password })
     .then((user) => {
-      if (!user) {
-        throw new Error('User not found');
+      if (user) {
+        console.log('User found');
       }
       if (user.password !== password) {
-        throw new Error('Wrong password');
+        console.log('Wrong password');
       }
-      res.redirect('/success');
+      res.redirect('/main');
     })
     .catch((error) => {
       console.error(error);
