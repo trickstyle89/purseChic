@@ -6,6 +6,7 @@
   align-items: center;
   margin-top: 18rem;
 }
+
 .login-form {
   width: 40rem;
   height: 35rem;
@@ -23,15 +24,18 @@
   padding: 2rem;
   background: #ffffff;
 }
+
 .form-input {
   background: #fafafa;
   border: 1px solid #eeeeee;
   padding: 12px;
   width: 100%;
 }
+
 .form-group {
   margin-bottom: 2rem;
 }
+
 .form-button {
   background: black;
   border: 1px solid #ddd;
@@ -40,13 +44,16 @@
   width: 100%;
   text-transform: uppercase;
 }
+
 .form-button:hover {
   background: darkgrey;
 }
+
 .form-header {
   text-align: center;
   margin-bottom: 2rem;
 }
+
 .form-footer {
   text-align: center;
 }
