@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0  shrink-to-fit=no"
+    />
 
     <title>Login</title>
 
@@ -16,39 +19,58 @@
     />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="/styles/reset.css" />
+    <!-- <link rel="stylesheet" href="/styles/reset.css" /> -->
 
     <!-- fontAwesome -->
     <script
       src="https://kit.fontawesome.com/0721b3d140.js"
       crossorigin="anonymous"
     ></script>
-
     <script src="/vendor/jquery-3.0.0.js"></script>
     <script defer src="/scripts/app.js"></script>
+
+    <!--App CSS-->
+    <link rel="stylesheet" href="/public/styles/login.css" type="text/css" />
   </head>
 
   <body>
     <%- include('./partials/_header') %>
     <main>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <img src="" alt="body img" />
-      <form action="/login" method="POST" class="login_form">
-        <input type="email" name="email" placeholder="email" required />
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          required
-        />
-        <button>Log In!</button>
-      </form>
+      <!-- <img src="" alt="body img" /> -->
+
+      <div class="login">
+        <form action="/login" method="POST" class="login-form">
+          <div class="form-header">
+            <h3>Welcome back!</h3>
+          </div>
+          <div class="form-group">
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter email"
+              class="form-input"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              class="form-input"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <button type="submit" class="form-button">Login</button>
+          </div>
+          <div class="form-footer">
+            Don't have an account? <a href="/register"> Sign Up</a>
+          </div>
+        </form>
+      </div>
     </main>
-    <footer>some info</footer>
 
     <!-- Bootstrap JS -->
     <script
