@@ -5,12 +5,15 @@ const userQueries = require('../db/queries/users_queries');
 
 router.use((req, res, next) => {
   if (req.session.email) {
-    res.redirect('/collection')
+    return res.redirect('/collection')
   }
   next();
 })
 router.get('/', (req, res) => {
-  res.render('login');
+  const templateVars = {
+    email: null
+  }
+  res.render('login', templateVars);
 });
 
 
