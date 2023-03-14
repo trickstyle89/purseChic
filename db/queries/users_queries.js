@@ -9,7 +9,6 @@ const getUsers = () => {
     });
 };
 
-
 // *** test run ***
 const userTest = () => {
   return db.query('SELECT first_name FROM users LIMIT 1;')
@@ -18,8 +17,6 @@ const userTest = () => {
       return data.rows[0];
     });
 };
-
-// userTest();
 
 const addUser = function (users) {
   return db.query(`

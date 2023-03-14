@@ -16,7 +16,7 @@
     />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="/styles/reset.css" />
+    <!-- link rel="stylesheet" href="/styles/reset.css" / -->
 
     <!-- fontAwesome -->
     <script
@@ -31,14 +31,29 @@
   <body>
     <%- include('./partials/_header') %>
     <main>
-      <form action="/messages" method="GET">
+      <h1>.</h1>
+      <h1>.</h1>
+      <p>Name of the sender</p>
+        <section>Messages Should appear here.
+          <ul>
+          <% for(const message of messages) { %>
+          <li><%= message.message_content %></li>
+         <% } %>
+        </ul>
+        </section>
+
+
+
+      <p>the message from the sender</p>
+      <h1>.</h1>
+      <h1>.</h1>
+      <form action="/messages" method="POST class="messages-form">
         <div>
-          <p>Name of the sender</p>
-          <p>the message from the sender</p>
-          <button>delete message</button>
+          <input type="text"/>
+          <button>Send a new message button</button>
         </div>
       </form>
-      <div>Send a new message button</div>
+      <div>Div Line here</div>
     </main>
     <footer>some info</footer>
 

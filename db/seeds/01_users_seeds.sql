@@ -5,6 +5,3 @@ VALUES
 ('Sophie', 'Smith', 'sophiesmith@hotmail.com', '456'),
 ('Alex', 'Brown', 'alexbrown@hotmail.com', '789'),
 ('Lucy', 'Glaze', 'lucyg@gmail.com', 'password');
-
-
-
