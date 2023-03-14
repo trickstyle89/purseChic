@@ -26,26 +26,4 @@ router.post('/', (req, res) => {
     });
 });
 
-/*
-router.post('/', (req, res) => {
-  const { email, password } = req.body;
-  userQueries.checkUser({ email, password })
-    .then((user) => {
-      if (user) {
-        if (user.password === password) {
-          res.redirect('/collection');
-        }
-      } else {
-        console.log('Invalid login credentials');
-        res.render('login');
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-      res.status(500).send('Error logging in!');
-    });
-});
-*/
-
-
 module.exports = router;
