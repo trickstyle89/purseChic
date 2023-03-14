@@ -8,7 +8,9 @@
 const express = require('express');
 const router  = express.Router();
 const db = require('../db/connection');
+const productQueries = require('../db/queries/product_queries');
 
+/*
 router.get('/', (req, res) => {
   const query = `SELECT * FROM products`;
   console.log(query);
@@ -23,7 +25,17 @@ router.get('/', (req, res) => {
         .json({ error: err.message });
     });
 });
+*/
 
-
+router.get('/', (req, res) => {
+  productQueries.getProducts()
+    .then((products) => {
+    res.json(products);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send('Error retrieving product data');
+    });
+});
 
 module.exports = router;
