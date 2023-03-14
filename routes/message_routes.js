@@ -7,12 +7,14 @@
 
 const express = require('express');
 const router  = express.Router();
-const userQueries = require('../db/queries/users_queries');
-
+const messageQueries = require('../db/queries/message_queries');
+/*
 router.get('/', (req, res) => {
-  userQueries.getUsers()
-    .then(users => {
-      res.json({ users });
+  messageQueries.getAllMessages()
+    .then(data => {
+      res.render('messages', {
+        messages: data.rows
+      });
     })
     .catch(err => {
       res
@@ -20,5 +22,23 @@ router.get('/', (req, res) => {
         .json({ error: err.message });
     });
 });
+*/
+
+
+
+router.get('/', (req, res) => {
+  messageQueries.getAllMessages()
+    .then(messages => {
+      console.log('from message routes line 32', messages);
+      const templateVars = {messages}
+      res.render('messages', templateVars);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
 
 module.exports = router;
