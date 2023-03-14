@@ -11,13 +11,9 @@ router.get('/', (req, res) => {
   productQueries.getProducts()
     .then((products) => {
       console.log('from product routes line 21', products);
-      // const templateVars = { products };
-      res.render('main', { products, email })
-      // res.json(products);
-      res.json(products);
+      return res.render('main', { products, email })
     })
     .catch((error) => {
-      // console.error(error);
       res.status(500).send('Error retrieving product data');
     });
 });
