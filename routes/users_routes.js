@@ -13,10 +13,13 @@ const userQueries = require('../db/queries/users_queries');
 
 
 router.get('/', (req, res) => {
+  console.log('req.session:', req.session)
+  const email = req.session.email;
   userQueries.userTest()
     .then((name) => {
+      console.log('name: ', name)
       // res.json(test); just sends a JSON that overwrites everything on EJS.
-      res.render('index', { user: name });
+      res.render('index', { email });
     })
     .catch((error) => {
       console.error(error);

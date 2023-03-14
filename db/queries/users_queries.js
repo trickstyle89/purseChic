@@ -11,7 +11,7 @@ const getUsers = () => {
 
 // *** test run ***
 const userTest = () => {
-  return db.query('SELECT first_name FROM users LIMIT 1;')
+  return db.query('SELECT email FROM users LIMIT 1;')
     .then(data => {
       // console.log('users line 17 from users_query.js, LIMIT 1', data.rows);
       return data.rows[0];
@@ -24,7 +24,7 @@ const addUser = function (users) {
   VALUES ($1, $2, $3, $4)
   RETURNING *;
   `, [users.first_name, users.last_name, users.email, users.password]
-    )
+  )
     .then((result) => {
       return result.rows[0];
     })
@@ -40,7 +40,7 @@ const checkUser = function (users) {
   FROM users
   WHERE email = $1 AND password = $2;
   `, [users.email, users.password]
-    )
+  )
     .then((result) => {
       return result.rows[0];
     })

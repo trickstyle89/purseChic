@@ -21,7 +21,7 @@ const getProductsImage = () => {
     });
 };
 
-const addProduct = function(products) {
+const addProduct = function (products) {
   return db.query(`
   INSERT INTO products (title, price, description, product_photo, seller_id)
   VALUES ($1, $2, $3, $4, $5)
@@ -37,7 +37,7 @@ const addProduct = function(products) {
 };
 
 // A simple filter for price. *** Not tested ***
-const filterPrice = function(minPrice, maxPrice) {
+const filterPrice = function (minPrice, maxPrice) {
   return db.query(`
       SELECT * FROM products WHERE price >= $1 AND price <= $2;
     `, [minPrice, maxPrice])
@@ -51,7 +51,7 @@ const filterPrice = function(minPrice, maxPrice) {
 
 
 // A  filter for favorited items . *** Not tested ***
-const filterFavorites = function(favorites) {
+const filterFavorites = function (favorites) {
   return db.query(`
     SELECT items.*
     FROM items

@@ -42,6 +42,7 @@ const registerRouter = require('./routes/register_routes');
 const thankyouRouter = require('./routes/thank_you_routes')
 const productsRouter = require('./routes/products_routes');
 const loginRouter = require('./routes/login_routes')
+const logoutRouter = require('./routes/logout_routes.js')
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -53,6 +54,7 @@ app.use('/register', registerRouter);
 app.use('/thankyou', thankyouRouter);
 app.use('/newlisting', addProductsRouter);
 app.use('/messages', messagesRouter);
+app.use('/logout', logoutRouter);
 
 // *** working on this. First param is route and then back to the router files.
 // *** whatever route you use here will be stripped on the other end.

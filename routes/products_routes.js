@@ -5,15 +5,6 @@ const router = express.Router();
 const db = require('../db/connection');
 const productQueries = require('../db/queries/product_queries');
 
-// Middleware function that will be applied to all routes in the router
-// router.use((req, res, next) => {
-//   // Check if user is authenticated
-//   if (req.session && req.session.authenticated) {
-//     next();
-//   } else {
-//     res.render('error');
-//   }
-// });
 
 router.get('/', (req, res) => {
   productQueries.getProducts()
@@ -22,6 +13,7 @@ router.get('/', (req, res) => {
       // const templateVars = { products };
       res.render('main', { products })
       // res.json(products);
+      res.json(products);
     })
     .catch((error) => {
       // console.error(error);
