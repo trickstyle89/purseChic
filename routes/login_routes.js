@@ -1,5 +1,5 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const db = require('../db/connection');
 const userQueries = require('../db/queries/users_queries');
 
@@ -13,12 +13,16 @@ router.post('/', (req, res) => {
   userQueries.checkUser({ email, password })
     .then((user) => {
       if (user) {
-        console.log('User found');
+        if (user.password === password) {
+          res.redirect('/collection');
+        } else {
+          console.log('Invalid login credentials');
+          res.render('login');
+        }
+      } else {
+        console.log('Invalid login credentials');
+        res.render('login');
       }
-      if (user.password !== password) {
-        console.log('Wrong password');
-      }
-      res.redirect('/main');
     })
     .catch((error) => {
       console.error(error);
