@@ -15,9 +15,6 @@ router.post('/', (req, res) => {
       if (user) {
         if (user.password === password) {
           res.redirect('/collection');
-        } else {
-          console.log('Invalid login credentials');
-          res.render('login');
         }
       } else {
         console.log('Invalid login credentials');
