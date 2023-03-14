@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Purse Selection</title>
+    <title>Collection</title>
 
     <!-- Bootstrap CSS -->
     <link
@@ -16,7 +16,7 @@
     />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="/styles/reset.css" />
+    <!-- <link rel="stylesheet" href="/styles/reset.css" /> -->
 
     <!-- fontAwesome -->
     <script
@@ -31,6 +31,18 @@
   <body>
     <%- include('./partials/_header') %>
     <main>
+      <br />
+      <br />
+      <br />
+      <section>
+        Products Should appear here.
+        <ul>
+          <% for(const product of products) { %>
+          <li><%= products.price%></li>
+          <% } %>
+        </ul>
+      </section>
+
       <div class="two_products">
         <div>
           <div>
@@ -54,7 +66,7 @@
         </div>
       </div>
     </main>
-    <footer>some info</footer>
+
     <!-- Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
