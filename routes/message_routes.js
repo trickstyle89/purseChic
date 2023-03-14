@@ -8,28 +8,23 @@
 const express = require('express');
 const router  = express.Router();
 const messageQueries = require('../db/queries/message_queries');
-/*
-router.get('/', (req, res) => {
-  messageQueries.getAllMessages()
-    .then(data => {
-      res.render('messages', {
-        messages: data.rows
-      });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
+
+ router.use((req, res, next) => {
+  if (req.session.email) {
+    next();
+  }
+  else {
+    res.redirect('/login')
+  }
 });
-*/
 
 
-
-router.get('/', (req, res) => {
-  messageQueries.getAllMessages()
+/*
+router.post('/', (req, res) => {
+  const {}
+  messageQueries.addUserMessages()
     .then(messages => {
-      console.log('from message routes line 32', messages);
+      console.log('from message routes line 30', messages);
       const templateVars = {messages}
       res.render('messages', templateVars);
     })
@@ -39,6 +34,23 @@ router.get('/', (req, res) => {
         .json({ error: err.message });
     });
 });
+*/
+
+router.get('/', (req, res) => {
+  messageQueries.getAllMessages()
+    .then(messages => {
+      console.log('from message routes line 45', messages);
+      const templateVars = {messages}
+      res.render('messages', templateVars);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+
 
 
 module.exports = router;
