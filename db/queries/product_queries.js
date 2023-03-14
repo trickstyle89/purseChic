@@ -7,7 +7,7 @@ const getProducts = () => {
   return db.query('SELECT * FROM products;')
     .then(data => {
       // console.log('products line 9 from products_query.js', data.rows)
-      return data.rows[0];
+      return data.rows;
     });
 };
 
@@ -21,13 +21,13 @@ const getProductsImage = () => {
     });
 };
 
-const addProduct = function (products) {
+const addProduct = function(products) {
   return db.query(`
   INSERT INTO products (title, price, description, product_photo, seller_id)
   VALUES ($1, $2, $3, $4, $5)
   RETURNING *;
-  `, [products.title, products.price, products.description , products.product_photo, products.seller_id]
-    )
+  `, [products.title, products.price, products.description, products.product_photo, products.seller_id]
+  )
     .then((result) => {
       return result.rows[0];
     })
@@ -37,8 +37,8 @@ const addProduct = function (products) {
 };
 
 // A simple filter for price. *** Not tested ***
-  const filterPrice = function(minPrice, maxPrice) {
-    return db.query(`
+const filterPrice = function(minPrice, maxPrice) {
+  return db.query(`
       SELECT * FROM products WHERE price >= $1 AND price <= $2;
     `, [minPrice, maxPrice])
     .then((result) => {
@@ -47,12 +47,12 @@ const addProduct = function (products) {
     .catch((err) => {
       console.log(err.message);
     });
-  };
+};
 
 
 // A  filter for favorited items . *** Not tested ***
-  const filterFavorites = function(favorites) {
-    return db.query(`
+const filterFavorites = function(favorites) {
+  return db.query(`
     SELECT items.*
     FROM items
     JOIN favorites ON items.id = favorites.item_id
@@ -63,7 +63,7 @@ const addProduct = function (products) {
     .catch((err) => {
       console.log(err.message);
     });
-  };
+};
 
 
 
