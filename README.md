@@ -89,6 +89,7 @@ $ npm run local
 - [EJS](https://ejs.co/)
 - [morgan](https://ejs.co/)
 - [Sass](https://sass-lang.com/)
+- [cookie-session](https://www.npmjs.com/package/cookie-session)
 
 ## Dev Dependencies
 
