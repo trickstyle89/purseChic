@@ -7,10 +7,11 @@ const getProducts = () => {
   return db.query('SELECT * FROM products;')
     .then(data => {
       // console.log('products line 9 from products_query.js', data.rows)
-      return data.rows;
+      return data.rows[0];
     });
 };
 
+// tested and returns only an object of URL links.
 const getProductsImage = () => {
   return db.query('SELECT product_photo FROM products;')
     .then(data => {
@@ -35,7 +36,38 @@ const addProduct = function (products) {
     });
 };
 
-module.exports = { getProducts, getProductsImage, addProduct };
+// A simple filter for price. *** Not tested ***
+  const filterPrice = function(minPrice, maxPrice) {
+    return db.query(`
+      SELECT * FROM products WHERE price >= $1 AND price <= $2;
+    `, [minPrice, maxPrice])
+    .then((result) => {
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+  };
+
+
+// A  filter for favorited items . *** Not tested ***
+  const filterFavorites = function(favorites) {
+    return db.query(`
+    SELECT items.*
+    FROM items
+    JOIN favorites ON items.id = favorites.item_id
+    WHERE favorites.user_id = $1;    `, [favorites.user_id])
+    .then((result) => {
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+  };
+
+
+
+module.exports = { getProducts, getProductsImage, addProduct, filterPrice, filterFavorites };
 
 // be sure to run the seed file to populate you DB
 // console to see if this works at all Confirmed with CONSOLE.LOG on line 9.
