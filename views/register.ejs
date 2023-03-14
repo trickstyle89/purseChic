@@ -23,47 +23,59 @@
       src="https://kit.fontawesome.com/0721b3d140.js"
       crossorigin="anonymous"
     ></script>
-
     <script src="/vendor/jquery-3.0.0.js"></script>
     <script defer src="/scripts/app.js"></script>
+
+    <!--App CSS-->
+    <link rel="stylesheet" href="/public/styles/forms.css" type="text/css" />
   </head>
 
   <body>
     <%- include('./partials/_header') %>
     <main>
-      <br />
-      <br />
-      <br />
-      <br />
-      <img src="" alt="body img" />
-      <form action="/register" method="POST" class="register_form">
-        <input
-          type="text"
-          name="first_name"
-          placeholder="first_name"
-          minlength="3"
-          maxlength="20"
-          required
-        />
-        <input
-          type="text"
-          name="last_name"
-          placeholder="last_name"
-          minlength="3"
-          maxlength="20"
-          required
-        />
-        <input type="email" name="email" placeholder="email" required />
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          required
-        />
-        <button type="submit">Register</button>
-      </form>
+      <div class="form-wrap">
+        <form action="/register" method="POST" class="register-form">
+          <div class="form-header">
+            <p>Buy and sell luxury handbags at a great price</p>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              name="first-name"
+              placeholder="Enter name"
+              maxlength="20"
+              class="form-input"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              class="form-input"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              class="form-input"
+              required
+            />
+          </div>
+          <div class="form-button">
+            <button type="submit" class="form-button">Sign Up</button>
+          </div>
+          <div class="form-footer">
+            Already have an account? <a href="/login"> Login </a>
+          </div>
+        </form>
+      </div>
     </main>
-    <footer>some info</footer>
+
     <!-- Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
