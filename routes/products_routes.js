@@ -7,11 +7,12 @@ const productQueries = require('../db/queries/product_queries');
 
 
 router.get('/', (req, res) => {
+  const email = req.session.email;
   productQueries.getProducts()
     .then((products) => {
       console.log('from product routes line 21', products);
       // const templateVars = { products };
-      res.render('main', { products })
+      res.render('main', { products, email })
       // res.json(products);
       res.json(products);
     })
