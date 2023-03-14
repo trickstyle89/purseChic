@@ -13,6 +13,7 @@ router.post('/', (req, res) => {
   userQueries.checkUser({ email, password })
     .then((user) => {
       if (user) {
+        console.log(user)
         if (user.password === password) {
           res.redirect('/collection');
         } else {
