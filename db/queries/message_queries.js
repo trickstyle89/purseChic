@@ -15,7 +15,6 @@ const getAllMessages = () => {
   FROM messages;
   `)
     .then(data => {
-      console.log('from message queries line 19', data.rows[0]);
       return data.rows;
     });
 };
