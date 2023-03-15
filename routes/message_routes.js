@@ -6,11 +6,12 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const messageQueries = require('../db/queries/message_queries');
 
- router.use((req, res, next) => {
-  if (req.session.email) {
+router.use((req, res, next) => {
+  const email = req.session.email;
+  if (email) {
     next();
   }
   else {
@@ -40,7 +41,7 @@ router.get('/', (req, res) => {
   messageQueries.getAllMessages()
     .then(messages => {
       console.log('from message routes line 45', messages);
-      const templateVars = {messages}
+      const templateVars = { messages }
       res.render('messages', templateVars);
     })
     .catch(err => {
