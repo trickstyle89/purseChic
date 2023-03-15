@@ -65,13 +65,10 @@ WHERE users.email = $1;
 };
 
 
-const addMessagesTest = function (sender_id, chat_id, message_content) {
-  message_content = req.body;
-  sender_id = 1;
-  chat_id = 1;
+const addMessage = function (sender_id, chat_id, message_content) {
   return db.query(`
   INSERT INTO messages (sender_id, chat_id, message_content)
-  VALUES ($1)
+  VALUES ($1, $2, $3)
   RETURNING *;
   `, [sender_id, chat_id, message_content]
     )
@@ -83,4 +80,4 @@ const addMessagesTest = function (sender_id, chat_id, message_content) {
     });
   };
 
-module.exports = { getAllChats, getAllMessages, getUserMessages, addUserMessages, findChatData, addMessagesTest };
+module.exports = { getAllChats, getAllMessages, getUserMessages, addUserMessages, findChatData, addMessage };

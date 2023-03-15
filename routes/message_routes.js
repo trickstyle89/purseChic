@@ -19,57 +19,69 @@ router.use((req, res, next) => {
   }
 });
 
-router.get('/', (req, res) => {
-  const email = req.session.email;
-  messageQueries.getAllMessages()
-    .then(messages => {
-      const templateVars = { messages, email }
-      res.render('messages', templateVars);
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
 
-//Using the email cookie to find all message info
-// outputs object with sender.id, chat_id, message_content
-// *** not tested ***
-/* router.post('/', (req, res) => {
-  const email = req.session.email
-  const text = req.body
-  messageQueries.findChatData(email)
-    .then(chatData => {
-      const tempData = { textID }
-      messageQueries.addUserMessages(textID.sender_id, textID.chat_id, text)
-        .then(messages => {
-          const templateVars = { messages, email };
-          res.render('messages', templateVars);
-        })
-        .catch(err => {
-          res
-            .status(500).json({ error: err.message });
-        });
-    })
-});
-*/
-
+/*
 router.post('/', (req, res) => {
-  const email = req.session.email
-  console.log(email);
-  const text = req.body
-  console.log(text);
-  messageQueries.addMessagesTest(1, 1, text)
-  .then(message => {
-    const templateVar = {message};
+  const { message } = req.body;
+  const email = req.session.email;
+
+  messageQueries.addMessage(1, 1, message)  // the plan is to have the user_id and the chat_id provided....
+  .then(() => {
+    return messageQueries.getAllMessages(); // fetch all the messages from the database
+  })
+  .then(messages => {
+    const templateVars = {
+      messages,
+      email
+    };
     res.render('messages', templateVars);
   })
   .catch(err => {
-    res
-      .status(500).json({ error: err.message });
+    res.status(500).json({ error: err.message });
   });
 });
+
+*/
+router.get('/', (req, res) => {
+  const email = req.session.email;
+  let chatData;
+
+  messageQueries.findChatData(email)
+    .then(result => {
+      chatData = result;
+      return messageQueries.getAllMessages();
+    })
+    .then(messages => {
+      const templateVars = { messages, email };
+      res.render('messages', templateVars);
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
+router.post('/', (req, res) => {
+  const { message } = req.body;
+  const email = req.session.email;
+
+  messageQueries.findChatData(email)
+    .then(result => {
+      const sender_id = result.sender_id;
+      const chat_id = result.chat_id;
+      return messageQueries.addMessage(sender_id, chat_id, message);
+    })
+    .then(() => {
+      return messageQueries.getAllMessages(); // fetch all the messages from the database
+    })
+    .then(messages => {
+      const templateVars = { messages, email };
+      res.render('messages', templateVars);
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
 
 
 
