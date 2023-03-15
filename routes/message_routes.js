@@ -38,10 +38,11 @@ router.post('/', (req, res) => {
 */
 
 router.get('/', (req, res) => {
+  const email = req.session.email;
   messageQueries.getAllMessages()
     .then(messages => {
       console.log('from message routes line 45', messages);
-      const templateVars = { messages }
+      const templateVars = { messages, email }
       res.render('messages', templateVars);
     })
     .catch(err => {
