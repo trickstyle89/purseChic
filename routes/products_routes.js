@@ -20,7 +20,6 @@ router.get('/', (req, res) => {
   const email = req.session.email;
   productQueries.getProducts()
     .then((products) => {
-      console.log('from product routes line 21', products);
       return res.render('main', { products, email })
     })
 });
