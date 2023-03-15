@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
         res.redirect('/collection');
       } else {
         console.log('Invalid login credentials');
-        res.render('login');
+        return res.redirect('/login');
       }
     })
     .catch((error) => {

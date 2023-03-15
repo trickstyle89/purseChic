@@ -11,7 +11,7 @@ router.post('/', (req, res) => {
   const email = req.session.email;
   productQueries.addProduct({ ...req.body })
     .then((products) => {
-      console.log('from product routes line 21', products);
+      console.log('from product routes line 14', products);
       return res.render('main', { products, email })
     })
 });
@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
   const productID = req.params.id;
   productQueries.getProductById(productID)
     .then((products) => {
-      console.log('from product routes line 21', products);
+      console.log('from product routes line 33', products);
       return res.render('main', { products, email })
     })
 });
@@ -39,7 +39,7 @@ router.post('/:id/edit', (req, res) => {
   const email = req.session.email;
   productQueries.getProducts()
     .then((products) => {
-      console.log('from product routes line 21', products);
+      console.log('from product routes line 42', products);
       return res.render('main', { products, email })
     })
 });
@@ -49,7 +49,7 @@ router.post('/:id/delete', (req, res) => {
   const email = req.session.email;
   productQueries.getProducts()
     .then((products) => {
-      console.log('from product routes line 21', products);
+      console.log('from product routes line 52', products);
       return res.render('main', { products, email })
     })
 });
