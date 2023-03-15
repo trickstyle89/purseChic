@@ -52,7 +52,11 @@ router.get('/', (req, res) => {
       return messageQueries.getUserMessages();
     })
     .then(messages => {
-      const templateVars = { messages, email };
+      const templateVars = {
+        first_name,
+        last_name,
+        messages,
+        email };
       res.render('messages', templateVars);
     })
     .catch(err => {
