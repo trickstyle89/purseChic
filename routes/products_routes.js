@@ -19,6 +19,7 @@ router.use((req, res, next) => {
   res.render('error');
   }
   });
+
   /*
 router.get('/', (req, res) => {
   const query = `SELECT * FROM products`;

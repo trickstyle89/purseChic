@@ -47,4 +47,22 @@ const addUserMessages = function (sender_id, chat_id, message_content) {
     });
   };
 
-module.exports = { getAllChats, getAllMessages, getUserMessages, addUserMessages };
+
+const findChatData = function (email) {
+return db.query(`
+SELECT messages.chat_id, messages.sender_id
+FROM messages
+JOIN users ON messages.sender_id = users.id
+WHERE users.email = $1;
+`, [email]
+ )
+ .then((result) => {
+  return result.rows[0];
+})
+.catch((err) => {
+  console.log(err.message);
+});
+};
+
+
+module.exports = { getAllChats, getAllMessages, getUserMessages, addUserMessages, findChatData };
