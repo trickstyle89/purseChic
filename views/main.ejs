@@ -37,10 +37,10 @@
         <% for(const product of products) { %>
         <div class="two_products">
           <div>
-            <h2><%= product.title%></h2>
+            <h4><%= product.title%></h4>
             <img src="<%= product.product_photo%>" width="200px" />
-            <p><%= product.price%></p>
-            <h3><%= product.description%></h3>
+            <h5>$<%= product.price%>.00</h5>
+            <p><%= product.description%></p>
           </div>
         </div>
         <% } %>
