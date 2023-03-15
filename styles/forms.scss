@@ -37,7 +37,7 @@
 }
 
 .form-button {
-  background: black;
+  background: #000;
   border: 1px solid #ddd;
   color: #ffffff;
   padding: 10px;
@@ -46,7 +46,7 @@
 }
 
 .form-button:hover {
-  background: darkgrey;
+  background: #a9a9a9;
 }
 
 .form-header {
@@ -56,4 +56,23 @@
 
 .form-footer {
   text-align: center;
+}
+
+.buttons {
+  border: none;
+  background-color: transparent;
+  float: right;
+  margin: 1.3rem;
+  color: #777;
+}
+
+.buttons:hover {
+  color: #000;
+}
+
+.fa-cart-shopping {
+  display: flex;
+  font-size: 2rem;
+  margin: 1.3rem;
+  float: right;
 }
