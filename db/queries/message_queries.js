@@ -28,52 +28,52 @@ const getUserMessages = () => { // not done.
     });
 };
 
-const addUserMessages = function (sender_id, chat_id, message_content) {
+const addUserMessages = function(sender_id, chat_id, message_content) {
   return db.query(`
   INSERT INTO messages (sender_id, chat_id, message_content)
   VALUES ($1, $2, $3)
   RETURNING *;
   `, [messages.sender_id, messages.chat_id, messages.messages_content]
-    )
+  )
     .then((result) => {
       return result.rows[0];
     })
     .catch((err) => {
       console.log(err.message);
     });
-  };
+};
 
 
-const findChatData = function (email) {
-return db.query(`
+const findChatData = function(email) {
+  return db.query(`
 SELECT messages.chat_id, messages.sender_id
 FROM messages
 JOIN users ON messages.sender_id = users.id
 WHERE users.email = $1;
 `, [email]
- )
- .then((result) => {
-  return result.rows[0];
-})
-.catch((err) => {
-  console.log(err.message);
-});
-};
-
-
-const addMessage = function (sender_id, chat_id, message_content) {
-  return db.query(`
-  INSERT INTO messages (sender_id, chat_id, message_content)
-  VALUES ($1, $2, $3)
-  RETURNING *;
-  `, [sender_id, chat_id, message_content]
-    )
+  )
     .then((result) => {
       return result.rows[0];
     })
     .catch((err) => {
       console.log(err.message);
     });
-  };
+};
 
-module.exports = { getAllChats, getAllMessages, getUserMessages, addUserMessages, findChatData, addMessage };
+
+const addMessage = function(sender_id, chat_id, message_content) {
+  return db.query(`
+  INSERT INTO messages (sender_id, chat_id, message_content)
+  VALUES ($1, $2, $3)
+  RETURNING *;
+  `, [sender_id, chat_id, message_content]
+  )
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+module.exports = { getAllMessages, getUserMessages, addUserMessages, findChatData, addMessage };
