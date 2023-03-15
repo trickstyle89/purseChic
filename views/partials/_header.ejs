@@ -9,23 +9,23 @@
         <ul class="nav navbar-nav">
           <li><a href="/mylistings">My Listings</a></li>
           <li><a href="/collection">Shop Collection</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="/messages">Messages</a></li>
         </ul>
         <% if(!email){ %>
-          <form action="/login" method="get">
-            <button class="navbar-header buttons">Login</button>
-          </form>
-          <form action="/register" method="GET">
-            <button class="navbar-header buttons">Sign Up</button>
-          </form>
-          <% } else {%>
-            <form action="/logout" method="POST">
-              <span>Logged in as:<%= email %></span>
-              <button class="navbar-header buttons">logout</button>
-            </form>
-            <% } %>
-              <i class="fa-solid fa-cart-shopping"></i>
-              <!-- <ul class="nav navbar-nav navbar-right">
+        <form action="/login" method="get">
+          <button class="navbar-header buttons">Login</button>
+        </form>
+        <form action="/register" method="GET">
+          <button class="navbar-header buttons">Sign Up</button>
+        </form>
+        <% } else {%>
+        <form action="/logout" method="POST">
+          <span>Logged in as:<%= email %></span>
+          <button class="navbar-header buttons">logout</button>
+        </form>
+        <% } %>
+        <i class="fa-solid fa-cart-shopping"></i>
+        <!-- <ul class="nav navbar-nav navbar-right">
               <li><a href="/login">Login</a></li>
               <li><a href="/register">Sign Up</a></li>
             </ul> -->
