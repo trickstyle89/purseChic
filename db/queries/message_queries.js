@@ -76,4 +76,4 @@ const addMessage = function (sender_id, chat_id, message_content) {
     });
   };
 
-module.exports = { getAllChats, getAllMessages, getUserMessages, addUserMessages, findChatData, addMessage };
+module.exports = { getAllMessages, getUserMessages, addUserMessages, findChatData, addMessage };
