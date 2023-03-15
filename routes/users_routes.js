@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
   }
   userQueries.userTest()
     .then((name) => {
-      res.render('index', { user: name });
+      res.render('index', { user: name, email });
     })
     .catch((error) => {
       console.error(error);
