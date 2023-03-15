@@ -37,11 +37,39 @@ VALUES
 
 INSERT INTO chats (user_one, user_two)
 VALUES
-(1, 2);
+(1, 2),
+(1, 3),
+(1, 4),
+(2, 3),
+(2, 4),
+(3, 4);
 
 INSERT INTO messages (sender_id, chat_id, message_content)
 VALUES
 (1, 1, 'Hello! I really want to buy that purse!'),
 (2, 1, 'Hi! That is great because I have been wanting to sell it!'),
 (1, 1, 'Can we negotiable a better price?'),
-(2, 1, 'Sorry, I am firm with that price. Its ONE OF A KIND!');
+(2, 1, 'Sorry, I am firm with that price. Its ONE OF A KIND!'),
+(3, 1, 'Hello! I want that purse!'),
+(1, 3, 'I have another buyer....'),
+(3, 1, 'I will pay DOUBLE listed price!'),
+(1, 3, 'SOLD!'),
+(4, 1, 'Your prices are a RIPOFF!'),
+(1, 4, 'Do not care! cheapskate!'),
+(4, 1, 'HOW DARE YOU!'),
+(1, 4, 'BYE!');
+
+INSERT INTO favorites (user_id, item_id)
+VALUES
+(1, 2),
+(1, 3),
+(1, 5),
+(2, 1),
+(2, 4),
+(3, 1),
+(3, 2),
+(3, 3),
+(4, 8),
+(4, 7),
+(4, 6),
+(4, 5);
