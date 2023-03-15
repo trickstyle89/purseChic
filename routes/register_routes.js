@@ -12,16 +12,28 @@ router.get('/', (req, res) => {
   res.render('register', templateVars);
 });
 
-router.post('/', (req, res) => { //not really sure if I need register in this portion
+
+router.post('/', (req, res) => {
   const { first_name, last_name, email, password } = req.body;
-  userQueries.addUser({ first_name, last_name, email, password }) //because it is directly from EJS names.
-    .then((newUser) => {
-      res.redirect('/collection') // is that where we want to send it?
+  userQueries.getUserByEmail(email)
+    .then((existingUser) => {
+      if (existingUser.rows.length > 0) {
+        return res.status(400).send('Email already exists');
+      } else {
+        return userQueries.addUser({ first_name, last_name, email, password })
+          .then((newUser) => {
+            req.session.email = newUser.email;
+            return res.redirect('/collection');
+          })
+          .catch((error) => {
+            console.error(error);
+            return res.status(500).send('Error registering new user data!');
+          });
+      }
     })
     .catch((error) => {
       console.error(error);
-      res.status(500).send('Error registering new user data!');
+      return res.status(500).send('Error checking if email already exists!');
     });
 });
-
 module.exports = router;

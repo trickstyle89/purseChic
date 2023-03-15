@@ -49,4 +49,11 @@ const checkUser = function (users) {
     });
 };
 
-module.exports = { getUsers, userTest, addUser, checkUser };
+const getUserByEmail = (email) => {
+  return db.query(`
+    SELECT *
+    FROM users
+    WHERE email = $1
+  `, [email]);
+}
+module.exports = { getUsers, userTest, addUser, checkUser, getUserByEmail };
