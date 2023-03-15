@@ -15,9 +15,6 @@
       crossorigin="anonymous"
     />
 
-    <!-- Styles -->
-    <!-- link rel="stylesheet" href="/styles/reset.css" / -->
-
     <!-- fontAwesome -->
     <script
       src="https://kit.fontawesome.com/0721b3d140.js"
@@ -34,22 +31,21 @@
       <h1>.</h1>
       <h1>.</h1>
       <p>Name of the sender</p>
-        <section>Messages Should appear here.
-          <ul>
+      <section>
+        Messages Should appear here.
+        <ul>
           <% for(const message of messages) { %>
           <li><%= message.message_content %></li>
-         <% } %>
+          <% } %>
         </ul>
-        </section>
-
-
+      </section>
 
       <p>the message from the sender</p>
       <h1>.</h1>
       <h1>.</h1>
-      <form action="/messages" method="POST class="messages-form">
+      <form action="/messages" method="POST" class="messages-form">
         <div>
-          <input type="text"/>
+          <input type="text" />
           <button>Send a new message button</button>
         </div>
       </form>

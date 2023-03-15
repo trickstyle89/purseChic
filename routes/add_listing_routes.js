@@ -5,7 +5,11 @@ const productQueries = require('../db/queries/product_queries');
 
 
 router.get('/', (req, res) => {
-  res.render('add_listing');
+  const email = req.session.email;
+  const templateVars = {
+    email
+  }
+  res.render('add_listing', templateVars);
 });
 
 router.post('/', (req, res) => {

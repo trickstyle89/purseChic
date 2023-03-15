@@ -5,7 +5,11 @@ const router = express.Router();
 const userQueries = require('../db/queries/users_queries');
 
 router.get('/', (req, res) => {
-  res.render('register');
+  const email = req.session.email;
+  const templateVars = {
+    email
+  }
+  res.render('register', templateVars);
 });
 
 router.post('/', (req, res) => { //not really sure if I need register in this portion
