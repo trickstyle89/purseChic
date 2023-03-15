@@ -1,14 +1,10 @@
-/*
- * All routes for Widget Data are defined here
- * Since this file is loaded in server.js into api/widgets,
- *   these routes are mounted onto /api/widgets
- * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
- */
+// Routing for collections page where products are displayed to users
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const db = require('../db/connection');
 const productQueries = require('../db/queries/product_queries');
+
 
 // Middleware function that will be applied to all routes in the router
 router.use((req, res, next) => {
@@ -37,13 +33,15 @@ router.get('/', (req, res) => {
 });
 */
 
+
 router.get('/', (req, res) => {
+  const email = req.session.email;
   productQueries.getProducts()
     .then((products) => {
-    res.json(products);
+      console.log('from product routes line 21', products);
+      return res.render('main', { products, email })
     })
     .catch((error) => {
-      console.error(error);
       res.status(500).send('Error retrieving product data');
     });
 });

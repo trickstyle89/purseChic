@@ -6,11 +6,12 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const messageQueries = require('../db/queries/message_queries');
 
- router.use((req, res, next) => {
-  if (req.session.email) {
+router.use((req, res, next) => {
+  const email = req.session.email;
+  if (email) {
     next();
   }
   else {
@@ -58,6 +59,7 @@ router.post('/', (req, res) => {
 });
 
 router.get('/', (req, res) => {
+  const email = req.session.email;
   messageQueries.getAllMessages()
     .then(messages => {
       const templateVars = {messages}

@@ -13,6 +13,11 @@ const userQueries = require('../db/queries/users_queries');
 
 
 router.get('/', (req, res) => {
+  console.log('req.session:', req.session)
+  const email = req.session.email;
+  const templateVars = {
+    email
+  }
   userQueries.userTest()
     .then((name) => {
       res.render('index', { user: name });
@@ -22,6 +27,5 @@ router.get('/', (req, res) => {
       res.status(500).send('Error retrieving test data');
     });
 });
-
 
 module.exports = router;
