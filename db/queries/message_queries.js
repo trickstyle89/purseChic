@@ -1,14 +1,5 @@
 const db = require('../connection');
 
-const getAllChats = () => {
-  return db.query(`
-  SELECT * FROM chats;
-`)
-    .then(data => {
-      return data.rows[0];
-    });
-};
-
 const getAllMessages = () => {
   return db.query(`
   SELECT message_content
@@ -24,9 +15,14 @@ const getUserMessages = () => { // not done.
   SELECT messages.*, users.first_name, users.last_name
   FROM messages
   JOIN users ON messages.sender_id = users.id
-  WHERE chat_id = 1
-  ORDER BY created_on ASC;
-  `)
+  WHERE messages.chat_id IN (
+  SELECT chat_id
+  FROM chats
+  WHERE user_id = (SELECT id FROM users WHERE email = $1)
+  )
+  AND messages.sender_id = (SELECT id FROM users WHERE email = $1)
+  ORDER BY messages.created_on ASC;
+  `, [email])
     .then(data => {
       return data.rows[0];
     });
