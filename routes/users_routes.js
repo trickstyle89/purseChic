@@ -20,9 +20,7 @@ router.get('/', (req, res) => {
   }
   userQueries.userTest()
     .then((name) => {
-      console.log('name: ', name)
-      // res.json(test); just sends a JSON that overwrites everything on EJS.
-      res.render('index', templateVars);
+      res.render('index', { user: name });
     })
     .catch((error) => {
       console.error(error);

@@ -6,8 +6,8 @@ const db = require('../connection');
 const getProducts = () => {
   return db.query('SELECT * FROM products;')
     .then(data => {
-      // console.log('products line 9 from products_query.js', data.rows)
-      return data.rows;
+      return data.rows[0];
+
     });
 };
 
@@ -15,9 +15,7 @@ const getProducts = () => {
 const getProductsImage = () => {
   return db.query('SELECT product_photo FROM products;')
     .then(data => {
-      // console.log('products line 17 from products_query.js', data.rows)
-      return data.rows;
-      // return data.rows[0]; [0] for the happy path to take the array out and just get the object.
+      return data.rows[0];
     });
 };
 

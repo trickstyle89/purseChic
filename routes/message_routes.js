@@ -20,29 +20,32 @@ router.use((req, res, next) => {
 });
 
 
-/*
+//Using the email cookie to find all message info
+// outputs object with sender.id, chat_id, message_content
+// *** not tested ***
 router.post('/', (req, res) => {
-  const {}
-  messageQueries.addUserMessages()
-    .then(messages => {
-      console.log('from message routes line 30', messages);
-      const templateVars = {messages}
-      res.render('messages', templateVars);
+  const email = req.session.email
+  const text = req.body
+  messageQueries.findChatData(email)
+    .then(chatData => {
+      const tempData = {textID}
+      messageQueries.addUserMessages(textID.sender_id, textID.chat_id, text )
+        .then(messages => {
+          const templateVar = {messages};
+          res.render('messages', templateVars);
+        })
+        .catch(err => {
+          res
+            .status(500).json({ error: err.message });
+        });
     })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
 });
-*/
 
 router.get('/', (req, res) => {
   const email = req.session.email;
   messageQueries.getAllMessages()
     .then(messages => {
-      console.log('from message routes line 45', messages);
-      const templateVars = { messages, email }
+      const templateVars = {messages}
       res.render('messages', templateVars);
     })
     .catch(err => {
