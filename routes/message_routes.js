@@ -36,7 +36,7 @@ router.get('/', (req, res) => {
 //Using the email cookie to find all message info
 // outputs object with sender.id, chat_id, message_content
 // *** not tested ***
-router.post('/', (req, res) => {
+/* router.post('/', (req, res) => {
   const email = req.session.email
   const text = req.body
   messageQueries.findChatData(email)
@@ -52,6 +52,23 @@ router.post('/', (req, res) => {
             .status(500).json({ error: err.message });
         });
     })
+});
+*/
+
+router.post('/', (req, res) => {
+  const email = req.session.email
+  console.log(email);
+  const text = req.body
+  console.log(text);
+  messageQueries.addMessagesTest(1, 1, text)
+  .then(message => {
+    const templateVar = {message};
+    res.render('messages', templateVars);
+  })
+  .catch(err => {
+    res
+      .status(500).json({ error: err.message });
+  });
 });
 
 

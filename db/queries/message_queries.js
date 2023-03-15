@@ -65,4 +65,22 @@ WHERE users.email = $1;
 };
 
 
-module.exports = { getAllChats, getAllMessages, getUserMessages, addUserMessages, findChatData };
+const addMessagesTest = function (sender_id, chat_id, message_content) {
+  message_content = req.body;
+  sender_id = 1;
+  chat_id = 1;
+  return db.query(`
+  INSERT INTO messages (sender_id, chat_id, message_content)
+  VALUES ($1)
+  RETURNING *;
+  `, [sender_id, chat_id, message_content]
+    )
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+  };
+
+module.exports = { getAllChats, getAllMessages, getUserMessages, addUserMessages, findChatData, addMessagesTest };

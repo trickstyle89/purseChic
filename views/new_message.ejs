@@ -24,9 +24,13 @@
 <body>
   <%- include('./partials/_header') %>
     <main>
-      <form action="/new_messages" method="POST">
+      <form action="/messages" method="POST">
         <p>To: name of the user</p>
-        <textarea name="new-message" placeholder="Enter your message"></textarea>
+        <textarea
+          name="messages"
+          placeholder="Enter your message"
+        ></textarea>
+
         <button>Send</button>
       </form>
     </main>
