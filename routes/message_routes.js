@@ -49,7 +49,7 @@ router.get('/', (req, res) => {
   messageQueries.findChatData(email)
     .then(result => {
       chatData = result;
-      return messageQueries.getUserMessages();
+      return messageQueries.getAllMessages();
     })
     .then(messages => {
       const templateVars = { messages, email };

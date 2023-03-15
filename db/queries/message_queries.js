@@ -2,8 +2,10 @@ const db = require('../connection');
 
 const getAllMessages = () => {
   return db.query(`
-  SELECT message_content
-  FROM messages;
+  SELECT *
+  FROM messages
+  JOIN users ON sender_id = users.id
+  LIMIT 2;
   `)
     .then(data => {
       return data.rows;
@@ -28,7 +30,7 @@ const getUserMessages = () => { // not done.
     });
 };
 
-const addUserMessages = function(sender_id, chat_id, message_content) {
+const addUserMessages = function (sender_id, chat_id, message_content) {
   return db.query(`
   INSERT INTO messages (sender_id, chat_id, message_content)
   VALUES ($1, $2, $3)
@@ -44,7 +46,7 @@ const addUserMessages = function(sender_id, chat_id, message_content) {
 };
 
 
-const findChatData = function(email) {
+const findChatData = function (email) {
   return db.query(`
 SELECT messages.chat_id, messages.sender_id
 FROM messages
@@ -61,7 +63,7 @@ WHERE users.email = $1;
 };
 
 
-const addMessage = function(sender_id, chat_id, message_content) {
+const addMessage = function (sender_id, chat_id, message_content) {
   return db.query(`
   INSERT INTO messages (sender_id, chat_id, message_content)
   VALUES ($1, $2, $3)
