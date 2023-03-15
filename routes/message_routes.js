@@ -19,6 +19,19 @@ router.use((req, res, next) => {
   }
 });
 
+router.get('/', (req, res) => {
+  const email = req.session.email;
+  messageQueries.getAllMessages()
+    .then(messages => {
+      const templateVars = { messages, email }
+      res.render('messages', templateVars);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
 
 //Using the email cookie to find all message info
 // outputs object with sender.id, chat_id, message_content
@@ -28,10 +41,10 @@ router.use((req, res, next) => {
   const text = req.body
   messageQueries.findChatData(email)
     .then(chatData => {
-      const tempData = {textID}
-      messageQueries.addUserMessages(textID.sender_id, textID.chat_id, text )
+      const tempData = { textID }
+      messageQueries.addUserMessages(textID.sender_id, textID.chat_id, text)
         .then(messages => {
-          const templateVar = {messages};
+          const templateVars = { messages, email };
           res.render('messages', templateVars);
         })
         .catch(err => {
@@ -58,19 +71,6 @@ router.post('/', (req, res) => {
   });
 });
 
-router.get('/', (req, res) => {
-  const email = req.session.email;
-  messageQueries.getAllMessages()
-    .then(messages => {
-      const templateVars = {messages}
-      res.render('messages', templateVars);
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
 
 
 

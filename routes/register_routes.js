@@ -16,7 +16,7 @@ router.post('/', (req, res) => { //not really sure if I need register in this po
   const { first_name, last_name, email, password } = req.body;
   userQueries.addUser({ first_name, last_name, email, password }) //because it is directly from EJS names.
     .then((newUser) => {
-      res.redirect('/main') // is that where we want to send it?
+      res.redirect('/collection') // is that where we want to send it?
     })
     .catch((error) => {
       console.error(error);
