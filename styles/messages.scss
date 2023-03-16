@@ -1,0 +1,28 @@
+.all-page {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  border: 3px grey solid;
+  margin-top: 20em;
+  padding: 5rem;
+}
+
+.inside-form {
+  background-color: lightgray;
+  border: 2px black solid;
+  margin-bottom: 5px;
+}
+
+li {
+  list-style: none;
+}
+
+.message-inside {
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 10px;
+}

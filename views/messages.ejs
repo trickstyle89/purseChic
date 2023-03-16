@@ -10,6 +10,7 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles/forms.css">
+  <link rel="stylesheet" href="styles/messages.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
     integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous" />
@@ -23,34 +24,33 @@
 
 <body>
   <%- include('./partials/_header') %>
-    <main>
-      <h1>.</h1>
-      <h1>.</h1>
-      <p>Name of the sender</p>
-      <section>
-        Messages Should appear here.
-        <ul>
-          <% for(const message of messages) { %>
-            <li>
-              <%= message.message_content %>
-            </li>
-            <% } %>
-        </ul>
-      </section>
+    <div class="all-page">
+      <main>
+        <section>
+          <ul>
+            <% for(const message of messages) { %>
+              <li class="message-inside">
+                <p>Name: <%=message.first_name%>
+                </p>
+                <p>
+                  <%= message.message_content %>
+                </p>
+              </li>
+              <% } %>
+          </ul>
 
-      <p>the message from the sender</p>
-      <h1>.</h1>
-      <h1>.</h1>
-      <form action="/messages" method="POST" class="messages_form">
-        <div>
-          <input type="text" name="message" />
-          <button>Send a new message button</button>
-        </div>
-      </form>
-      <div>Div Line here</div>
-    </main>
+          <p>the message from the sender</p>
+          <br>
+          <form action="/messages" method="POST" class="messages_form">
+            <div>
+              <input type="text" name="message" />
+              <button>Send a new message button</button>
+            </div>
+          </form>
+          <div>Div Line here</div>
+      </main>
+    </div>
     <footer>some info</footer>
-
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

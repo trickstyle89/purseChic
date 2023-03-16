@@ -2,8 +2,10 @@ const db = require('../connection');
 
 const getAllMessages = () => {
   return db.query(`
-  SELECT message_content
-  FROM messages;
+  SELECT *
+  FROM messages
+  JOIN users ON sender_id = users.id
+  LIMIT 2;
   `)
     .then(data => {
       return data.rows;
@@ -12,19 +14,19 @@ const getAllMessages = () => {
 
 
 const findChatData = function (email) {
-return db.query(`
+  return db.query(`
 SELECT messages.chat_id, messages.sender_id
 FROM messages
 JOIN users ON messages.sender_id = users.id
 WHERE users.email = $1;
 `, [email]
- )
- .then((result) => {
-  return result.rows[0];
-})
-.catch((err) => {
-  console.log(err.message);
-});
+  )
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
 };
 
 const addMessage = function (sender_id, chat_id, message_content) {
@@ -33,14 +35,15 @@ const addMessage = function (sender_id, chat_id, message_content) {
   VALUES ($1, $2, $3)
   RETURNING *;
   `, [sender_id, chat_id, message_content]
-    )
+  )
     .then((result) => {
       return result.rows[0];
     })
     .catch((err) => {
       console.log(err.message);
     });
-  };
+};
+
 
 const findChatMessages = function (chatId, userId) {
   return db.query(`
@@ -61,3 +64,4 @@ const findChatMessages = function (chatId, userId) {
 };
 
 module.exports = { getAllMessages, findChatData, addMessage, findChatMessages };
+
