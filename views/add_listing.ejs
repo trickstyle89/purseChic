@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Login Page</title>
+    <title>Add Listing</title>
 
     <!-- Bootstrap CSS -->
     <link
@@ -27,40 +27,42 @@
   <body>
     <%- include('./partials/_header') %>
     <main>
-      <img />
       <div>
         <br />
         <br />
         <br />
+
         <form action="/mylistings" method="POST" class="add-listing-form">
-          <input
-            type="text"
-            name="product_name"
-            placeholder="Product name"
-            required
-          />
-          <textarea
-            name="description"
-            placeholder="Add product description"
-            required
-          ></textarea>
-          <input
-            type="number"
-            name="product_price"
-            placeholder="Price"
-            required
-          />
-          <input
-            type="image"
-            name="product image"
-            placeholder="Insert a product image"
-            required
-          />
+          <div class="listing-inputs">
+            <input
+              type="text"
+              name="product_name"
+              placeholder="Product name"
+              required
+            />
+          </div>
+          <div class="listing-inputs">
+            <textarea
+              name="description"
+              placeholder="Add product description"
+              required
+            ></textarea>
+          </div>
+          <div class="listing-inputs">
+            <input name="product_price" placeholder="Price" required />
+          </div>
+          <div class="listing-inputs">
+            <input
+              name="product image"
+              placeholder="Insert a product image"
+              required
+            />
+          </div>
           <button>Post!</button>
         </form>
       </div>
     </main>
-    <footer>some info</footer>
+
     <!-- Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
