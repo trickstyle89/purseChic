@@ -7,13 +7,13 @@ const db = require('../connection');
 
 //CREATE
 const addProduct = (newProduct) => {
-  const { title, price, description, product_photo, seller_id } = newProduct;
+  const { title, price, description, product_photo } = newProduct;
   return db
     .query(`
-  INSERT INTO products (title, price, description, product_photo, seller_id)
-  VALUES ($1, $2, $3, $4, $5)
+  INSERT INTO products (title, price, description, product_photo)
+  VALUES ($1, $2, $3, $4)
   RETURNING *;
-  `, [title, price, description, product_photo, seller_id]
+  `, [title, price, description, product_photo]
     )
     .then((result) => {
       return result.rows[0];
@@ -60,7 +60,7 @@ const deleteProduct = (productID) => {
 }
 
 // A simple filter for price. *** Not tested ***
-const filterPrice = function(minPrice, maxPrice) {
+const filterPrice = function (minPrice, maxPrice) {
   return db.query(`
       SELECT * FROM products WHERE price >= $1 AND price <= $2;
     `, [minPrice, maxPrice])
@@ -74,7 +74,7 @@ const filterPrice = function(minPrice, maxPrice) {
 
 
 // A  filter for favorited items . *** Not tested ***
-const filterFavorites = function(favorites) {
+const filterFavorites = function (favorites) {
   return db.query(`
     SELECT items.*
     FROM items
