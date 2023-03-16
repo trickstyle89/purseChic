@@ -6,13 +6,15 @@ const db = require('../connection');
 //CRUD
 
 //CREATE
-const addProduct = function(product) {
-  return db.query(`
+const addProduct = (newProduct) => {
+  const { title, price, description, product_photo, seller_id } = newProduct;
+  return db
+    .query(`
   INSERT INTO products (title, price, description, product_photo, seller_id)
   VALUES ($1, $2, $3, $4, $5)
   RETURNING *;
-  `, [product.title, product.price, product.description, product.product_photo, product.seller_id]
-  )
+  `, [title, price, description, product_photo, seller_id]
+    )
     .then((result) => {
       return result.rows[0];
     })
@@ -23,24 +25,38 @@ const addProduct = function(product) {
 
 //READ ALL
 const getProducts = () => {
-  return db.query('SELECT * FROM products LIMIT 3;')
-    .then(data => {
-      return data.rows;
-
-    });
+  return db
+    .query('SELECT * FROM products;')
+    .then((data) => data.rows)
 };
 
 // READ ONE
 const getProductById = (productID) => {
-  return db.query('SELECT * FROM products WHERE id=$1;', [productID])
-    .then(data => {
-      return data.rows[0];
-    });
+  return db
+    .query('SELECT * FROM products WHERE id=$1;', [productID])
+    .then(data => data.rows)
+};
+
+const getUserById = (userID) => {
+  return db
+    .query('SELECT * FROM users WHERE id = $1', [userID])
+    .then((data) => data.rows);
 };
 
 //UPDATE
+const updateProduct = (updatedProduct) => {
+  const { title, price, description, product_photo } = updatedProduct;
+  return db
+    .query('UPDATE products SET title = $1, price = $2, description = $3, product_photo = $4 WHERE id = $5 RETURNING *', [title, price, description, product_photo]) // how do we update this
+    .then((data) => data.rows[0]);
+};
 
 //DELETE
+const deleteProduct = (productID) => {
+  return db
+    .query('DELETE FROM products WHERE id = $1', [productID])
+    .then((data) => data.rows)
+}
 
 
 // tested and returns only an object of URL links. - dont think its needed.
@@ -83,7 +99,7 @@ const filterFavorites = function(favorites) {
 
 
 
-module.exports = { getProducts, addProduct, filterPrice, filterFavorites, getProductById };
+module.exports = { getProducts, addProduct, filterPrice, filterFavorites, getProductById, updateProduct, deleteProduct };
 
 // be sure to run the seed file to populate you DB
 // console to see if this works at all Confirmed with CONSOLE.LOG on line 9.
