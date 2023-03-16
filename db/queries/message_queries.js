@@ -36,7 +36,7 @@ const addMessage = function (sender_id, chat_id, message_content) {
   `, [sender_id, chat_id, message_content]
   )
     .then((result) => {
-      return result.rows[0];
+      return {sender_id, chat_id, message_content: result.rows};
     })
     .catch((err) => {
       console.log(err.message);
@@ -53,12 +53,6 @@ const findChatMessages = function (chatId, userId) {
     WHERE chats.id = $1 AND (sender.id = $2 OR receiver.id = $2)
     ORDER BY messages.message_created_on ASC;
   `, [chatId, userId])
-  .then((result) => {
-  return result.rows;
-})
-  .catch((err) => {
-    console.log(err.message);
-  });
 };
 
 module.exports = { getAllMessages, findChatData, addMessage, findChatMessages };
