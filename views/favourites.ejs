@@ -1,68 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>My Favourites</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
-      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
-      crossorigin="anonymous"
-    />
+  <title>My Favourites</title>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles/forms.css" />
-    <link rel="stylesheet" href="/styles/index.css" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous" />
 
-    <!-- fontAwesome -->
-    <script
-      src="https://kit.fontawesome.com/0721b3d140.js"
-      crossorigin="anonymous"
-    ></script>
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/forms.css" />
+  <link rel="stylesheet" href="/styles/mylistings.css" />
 
-    <script src="/vendor/jquery-3.0.0.js"></script>
-    <script defer src="/scripts/app.js"></script>
-  </head>
+  <!-- fontAwesome -->
+  <script src="https://kit.fontawesome.com/0721b3d140.js" crossorigin="anonymous"></script>
 
-  <body>
-    <%- include('./partials/_header') %>
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+</head>
+
+<body>
+  <%- include('./partials/_header') %>
     <main>
       <section class="all-products">
         <%for(const favourite of favourites) { %>
-        <div class="each">
-          <img src="<%= favourite.product_photo%>" class="bag-img" />
-          <h4 class="price-img"><%= favourite.title%></h4>
-          <h5 class="price-img">$<%= favourite.price%>.00</h5>
-          <p><%= favourite.description%></p>
-          <div class="buttons">
-            <button class="edit-button">Edit</button>
-            <button class="delete-button">Delete</button>
+          <div class="each">
+            <img src="<%= favourite.product_photo%>" class="bag-img" />
+            <h4 class="price-img">
+              <%= favourite.title%>
+            </h4>
+            <h5 class="price-img">$<%= favourite.price%>.00</h5>
+            <p>
+              <%= favourite.description%>
+            </p>
+            <div class="buttons_page">
+              <button class="delete-button">Delete</button>
+            </div>
           </div>
-        </div>
-        <% } %>
+          <% } %>
       </section>
     </main>
 
     <!-- Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+      crossorigin="anonymous"></script>
+</body>
+
 </html>

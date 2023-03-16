@@ -89,7 +89,6 @@ const filterFavorites = function (favorites) {
 };
 
 
-
 module.exports = { getProducts, addProduct, filterPrice, filterFavorites, getProductById, updateProduct, deleteProduct, getUserById };
 
 // be sure to run the seed file to populate you DB
