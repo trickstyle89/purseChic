@@ -4,21 +4,30 @@ const express = require('express');
 const router = express.Router();
 // const db = require('../db/connection');
 const productQueries = require('../db/queries/product_queries');
+const { getUserByEmail } = require('../db/queries/users_queries');
 
 // CRUD
 //Create - post
 router.post('/', (req, res) => {
   const { email } = req.session;
+  const { title, price, description, product_photo } = req.body;
+  // console.log(req)
+  console.log(req.session)
+  console.log(req.body)
 
   if (!email) {
     return res.status(401).send('Please log in to add listing')
     // we can use template var to return error message
   }
-  productQueries
-    .addProduct({ ...req.body }) //passing object with all properties
-    .then((newProduct) => {
-      console.log('from product routes line 21', newProduct);
-      return res.redirect('/collection')
+
+  getUserByEmail(email)
+    .then((user) => {
+      productQueries
+        .addProduct({ title, price, description, product_photo, seller_id: user.id }) //passing object with all properties
+        .then((newProduct) => {
+          console.log('from product routes line 21', newProduct);
+          return res.redirect('/mylistings')
+        })
     })
 });
 
