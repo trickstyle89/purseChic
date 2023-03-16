@@ -36,8 +36,6 @@ const addMessage = function (sender_id, chat_id, message_content) {
   `, [sender_id, chat_id, message_content]
   )
     .then((result) => {
-      console.log('addmess line 39', result.rows[0]);
-      // return result.rows[0];
       return {sender_id, chat_id, message_content: result.rows};
     })
     .catch((err) => {
@@ -46,8 +44,6 @@ const addMessage = function (sender_id, chat_id, message_content) {
 };
 
 const findChatMessages = function (chatId, userId) {
-  console.log('findChat line 49chatId', chatId);
-  console.log('findChat line 50 useId', userId);
   return db.query(`
     SELECT messages.message_content, sender.first_name AS sender, receiver.first_name AS receiver
     FROM messages
@@ -56,14 +52,7 @@ const findChatMessages = function (chatId, userId) {
     JOIN users AS receiver ON (chats.user_one = receiver.id AND chats.user_two = sender.id) OR (chats.user_two = receiver.id AND chats.user_one = sender.id)
     WHERE chats.id = $1 AND (sender.id = $2 OR receiver.id = $2)
     ORDER BY messages.message_created_on ASC;
-  `, [chatId, userId]) //
-  /*.then((result) => {
-    console.log('messQ line57', result.rows);
-  return result.rows;
-})
-  .catch((err) => {
-    console.log(err.message);
- }); */
+  `, [chatId, userId])
 };
 
 module.exports = { getAllMessages, findChatData, addMessage, findChatMessages };

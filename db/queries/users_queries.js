@@ -1,5 +1,4 @@
 const db = require('../connection');
-// const { Pool } = require('pg');
 
 const getUsers = () => {
   return db.query('SELECT * FROM users;')

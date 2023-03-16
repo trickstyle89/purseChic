@@ -59,16 +59,6 @@ const deleteProduct = (productID) => {
     .then((data) => data.rows)
 }
 
-
-// tested and returns only an object of URL links. - dont think its needed.
-// const getProductsImage = () => {
-//   return db.query('SELECT product_photo FROM products;')
-//     .then(data => {
-//       return data.rows[0];
-//     });
-// };
-
-
 // A simple filter for price. *** Not tested ***
 const filterPrice = function(minPrice, maxPrice) {
   return db.query(`
