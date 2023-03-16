@@ -12,7 +12,7 @@
 
 main {
   border: 3px solid grey;
-  margin-top: 7em;
+  margin-top: 5em;
   padding: 3rem;
   background-color: #f2f2f2;
   border-radius: 10px;
@@ -50,6 +50,13 @@ main {
 li {
   list-style: none;
 }
+
+ul {
+  justify-content: center;
+  align-items: center;
+  padding-right: 3.5em;
+}
+
 
 .message-inside {
   border: 1px solid black;
