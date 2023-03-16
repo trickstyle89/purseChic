@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
   })
   .then((messages) => {
     const templateVars = {
-      messages,
+      messages: messages.rows,
       email };
     res.render('messages', templateVars);
   })
@@ -44,19 +44,18 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const { message } = req.body;
   const email = req.session.email;
-  let sender_id;
-  let chat_id;
+
   messageQueries.findChatData(email)
     .then(result => {
       sender_id = result.sender_id;
       chat_id = result.chat_id;
-      return messageQueries.addMessage(sender_id, chat_id, message);
+      return messageQueries.addMessage(sender_id, chat_id, message)
     })
-    .then(() => {
+    .then(({sender_id, chat_id}) => {
       return messageQueries.findChatMessages(chat_id, sender_id);
     })
     .then(messages => {
-      const templateVars = { messages, email };
+      const templateVars = { messages: messages.rows , email };
       res.render('messages', templateVars);
     })
     .catch(err => {
