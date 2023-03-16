@@ -7,22 +7,31 @@
   margin-top: 18rem;
 }
 
+body {
+  font-family: sans-serif;
+  background-color: #f2f2f2;
+}
+
+.navbar-default {
+  background-color: #1e1d1d;
+}
+
 .login-form {
-  width: 40rem;
-  height: 35rem;
-  margin: 0 auto;
-  border: 1px solid #ddd;
-  padding: 2rem;
-  background: #ffffff;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 100%;
 }
 
 .register-form {
-  width: 40rem;
-  height: 43rem;
-  margin: 0 auto;
-  border: 1px solid #ddd;
-  padding: 2rem;
-  background: #ffffff;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 100%;
 }
 
 .form-input {
