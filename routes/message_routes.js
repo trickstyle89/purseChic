@@ -19,50 +19,51 @@ router.use((req, res, next) => {
   }
 });
 
-
 /*
-router.post('/', (req, res) => {
-  const { message } = req.body;
-  const email = req.session.email;
-
-  messageQueries.addMessage(1, 1, message)  // the plan is to have the user_id and the chat_id provided....
-  .then(() => {
-    return messageQueries.getAllMessages(); // fetch all the messages from the database
-  })
-  .then(messages => {
-    const templateVars = {
-      messages,
-      email
-    };
-    res.render('messages', templateVars);
-  })
-  .catch(err => {
-    res.status(500).json({ error: err.message });
-  });
-});
-
-*/
 router.get('/', (req, res) => {
   const email = req.session.email;
   let chatData;
 
+  // finds the chat.it and sender.id for the user from cookie.
   messageQueries.findChatData(email)
     .then(result => {
       chatData = result;
-      return messageQueries.getUserMessages();
+      return messageQueries.getAllMessages();
     })
     .then(messages => {
-      const templateVars = {
-        first_name,
-        last_name,
-        messages,
-        email };
+      const templateVars = { messages, email };
       res.render('messages', templateVars);
     })
     .catch(err => {
       res.status(500).json({ error: err.message });
     });
 });
+*/
+
+router.get('/', (req, res) => {
+  const email = req.session.email;
+  messageQueries.findChatData(email)
+  .then((chatData) => {
+    console.log('line47', chatData);
+    const chatId = chatData.chat_id;
+    const senderId = chatData.sender_id;
+    console.log('line50', chatId);
+    console.log('line51', chatId);
+    return messageQueries.findChatMessages(chatId, senderId);
+  })
+  .then((messages) => {
+    console.log(messages);
+    const templateVars = {
+      messages,
+      email };
+    res.render('messages', templateVars);
+  })
+  .catch((err) => {
+    console.log(err.message);
+    res.status(500).send('Error fetching chat data');
+  });
+});
+
 
 router.post('/', (req, res) => {
   const { message } = req.body;
@@ -85,9 +86,6 @@ router.post('/', (req, res) => {
       res.status(500).json({ error: err.message });
     });
 });
-
-
-
 
 
 

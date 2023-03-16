@@ -10,39 +10,6 @@ const getAllMessages = () => {
     });
 };
 
-const getUserMessages = () => { // not done.
-  return db.query(`
-  SELECT messages.*, users.first_name, users.last_name
-  FROM messages
-  JOIN users ON messages.sender_id = users.id
-  WHERE messages.chat_id IN (
-  SELECT chat_id
-  FROM chats
-  WHERE user_id = (SELECT id FROM users WHERE email = $1)
-  )
-  AND messages.sender_id = (SELECT id FROM users WHERE email = $1)
-  ORDER BY messages.created_on ASC;
-  `, [email])
-    .then(data => {
-      return data.rows[0];
-    });
-};
-
-const addUserMessages = function (sender_id, chat_id, message_content) {
-  return db.query(`
-  INSERT INTO messages (sender_id, chat_id, message_content)
-  VALUES ($1, $2, $3)
-  RETURNING *;
-  `, [messages.sender_id, messages.chat_id, messages.messages_content]
-    )
-    .then((result) => {
-      return result.rows[0];
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
-  };
-
 
 const findChatData = function (email) {
 return db.query(`
@@ -60,7 +27,6 @@ WHERE users.email = $1;
 });
 };
 
-
 const addMessage = function (sender_id, chat_id, message_content) {
   return db.query(`
   INSERT INTO messages (sender_id, chat_id, message_content)
@@ -76,4 +42,22 @@ const addMessage = function (sender_id, chat_id, message_content) {
     });
   };
 
-module.exports = { getAllMessages, getUserMessages, addUserMessages, findChatData, addMessage };
+const findChatMessages = function (chatId, userId) {
+  return db.query(`
+    SELECT messages.message_content, sender.first_name AS sender, receiver.first_name AS receiver
+    FROM messages
+    JOIN users AS sender ON messages.sender_id = sender.id
+    JOIN chats ON messages.chat_id = chats.id
+    JOIN users AS receiver ON (chats.user_one = receiver.id AND chats.user_two = sender.id) OR (chats.user_two = receiver.id AND chats.user_one = sender.id)
+    WHERE chats.id = $1 AND (sender.id = $2 OR receiver.id = $2)
+    ORDER BY messages.message_created_on ASC;
+  `, [chatId, userId])
+  .then((result) => {
+  return result.rows;
+})
+  .catch((err) => {
+    console.log(err.message);
+  });
+};
+
+module.exports = { getAllMessages, findChatData, addMessage, findChatMessages };
