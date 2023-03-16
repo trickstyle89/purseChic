@@ -29,7 +29,7 @@ router.get('/', (req, res) => {
     return messageQueries.findChatMessages(chatId, senderId);
   })
   .then((messages) => {
-    console.log('Message_routes line32', messages);
+    console.log('Message_routes GET line32', messages);
     const templateVars = {
       messages,
       email };
@@ -45,20 +45,23 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const { message } = req.body;
   const email = req.session.email;
-  let sender_id;
-  let chat_id;
+
   messageQueries.findChatData(email)
     .then(result => {
       sender_id = result.sender_id;
       chat_id = result.chat_id;
-      return messageQueries.addMessage(sender_id, chat_id, message);
+            console.log('Message POST line54 Message from req.body', message);
+      return messageQueries.addMessage(sender_id, chat_id, message)
+        .then(() => ({sender_id, chat_id}));
     })
-    .then(() => {
+    .then(({sender_id, chat_id, message}) => {
+            console.log('Message POST line58 passing the id between methods', sender_id, chat_id);
       return messageQueries.findChatMessages(sender_id, chat_id);
     })
     .then(messages => {
+            console.log('Message POST right before templateVARS afterFindChat line62', messages);
       const templateVars = { messages, email };
-      console.log('Message_routes line61', templateVars);
+            console.log('Message_routes POST templateVARS afterFindChat line64', templateVars);
       res.render('messages', templateVars);
     })
     .catch(err => {
