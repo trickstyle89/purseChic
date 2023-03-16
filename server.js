@@ -37,7 +37,7 @@ app.use(cookieSession({
 const messagesRouter = require('./routes/message_routes');
 const usersRouter = require('./routes/users_routes'); // working on this
 // CREATE NEW FILE TO EACH ROUTE AND CONNECT IT USING APP.USE
-const addProductsRouter = require('./routes/add_listing_routes');
+// const addProductsRouter = require('./routes/add_listing_routes');
 const registerRouter = require('./routes/register_routes');
 const thankyouRouter = require('./routes/thank_you_routes')
 const productsRouter = require('./routes/products_routes');
@@ -52,15 +52,19 @@ app.use('/login', loginRouter);
 app.use('/mylistings', productsRouter);
 app.use('/register', registerRouter);
 app.use('/thankyou', thankyouRouter);
-app.use('/newlisting', addProductsRouter);
+// app.use('/newlisting', addProductsRouter);
 app.use('/messages', messagesRouter);
 app.use('/logout', logoutRouter);
+
+//testing for collections page and mylistings stuff
+
 
 // *** working on this. First param is route and then back to the router files.
 // *** whatever route you use here will be stripped on the other end.
 // watch Andy's video at 14 minutes to understand this part.
 app.use('/', usersRouter);
 app.use('/collection', productsRouter);
+
 app.use('/users', usersRouter);
 // Note: mount other resources here, using the same pattern above
 
