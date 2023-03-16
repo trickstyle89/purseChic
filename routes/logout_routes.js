@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.post('/', (req, res) => {
   req.session = null;
-  res.redirect('/login')
+  res.redirect('/collection')
 });
 
 module.exports = router;

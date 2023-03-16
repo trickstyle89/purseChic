@@ -44,6 +44,7 @@ const productsRouter = require('./routes/products_routes');
 const loginRouter = require('./routes/login_routes');
 const logoutRouter = require('./routes/logout_routes.js');
 const myListingsRouter = require('./routes/my_listings_routes.js');
+const favouritesRouter = require('./routes/favourites_routes');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -57,6 +58,7 @@ app.use('/thankyou', thankyouRouter);
 // app.use('/newlisting', addProductsRouter);
 app.use('/messages', messagesRouter);
 app.use('/logout', logoutRouter);
+app.use('/favourites', favouritesRouter);
 
 //testing for collections page and mylistings stuff
 
