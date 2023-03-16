@@ -5,6 +5,6 @@ VALUES
 (1, 1, 'Can we negotiable a better price?'),
 (2, 1, 'Sorry, I am firm with that price. Its ONE OF A KIND!'),
 (3, 2, 'Hello! I want that purse!'),
-(1, 2, 'I have another buyer....'),
+(4, 2, 'I have another buyer....'),
 (3, 2, 'I will pay DOUBLE listed price!'),
-(1, 2, 'SOLD!');
+(4, 2, 'SOLD!');

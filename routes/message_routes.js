@@ -19,59 +19,42 @@ router.use((req, res, next) => {
   }
 });
 
-
-/*
-router.post('/', (req, res) => {
-  const { message } = req.body;
+router.get('/', (req, res) => {
   const email = req.session.email;
+  messageQueries.findChatData(email)
+  .then((chatData) => {
 
-  messageQueries.addMessage(1, 1, message)  // the plan is to have the user_id and the chat_id provided....
-  .then(() => {
-    return messageQueries.getAllMessages(); // fetch all the messages from the database
+    const chatId = chatData.chat_id;
+    const senderId = chatData.sender_id;
+    return messageQueries.findChatMessages(chatId, senderId);
   })
-  .then(messages => {
+  .then((messages) => {
+    console.log('Message_routes line32', messages);
     const templateVars = {
       messages,
-      email
-    };
+      email };
     res.render('messages', templateVars);
   })
-  .catch(err => {
-    res.status(500).json({ error: err.message });
+  .catch((err) => {
+    console.log(err.message);
+    res.status(500).send('Error fetching chat data');
   });
 });
 
-*/
-router.get('/', (req, res) => {
-  const email = req.session.email;
-  let chatData;
-
-  messageQueries.findChatData(email)
-    .then(result => {
-      chatData = result;
-      return messageQueries.getAllMessages();
-    })
-    .then(messages => {
-      const templateVars = { messages, email };
-      res.render('messages', templateVars);
-    })
-    .catch(err => {
-      res.status(500).json({ error: err.message });
-    });
-});
 
 router.post('/', (req, res) => {
   const { message } = req.body;
   const email = req.session.email;
-
+  let sender_id;
+  let chat_id;
   messageQueries.findChatData(email)
     .then(result => {
-      const sender_id = result.sender_id;
-      const chat_id = result.chat_id;
+      sender_id = result.sender_id;
+      chat_id = result.chat_id;
       return messageQueries.addMessage(sender_id, chat_id, message);
     })
-    .then(() => {
-      return messageQueries.getAllMessages(); // fetch all the messages from the database
+    .then(() => {  // async issue?
+      return messageQueries.findChatMessages(sender_id, chat_id);
     })
     .then(messages => {
       const templateVars = { messages, email };
@@ -81,10 +64,5 @@ router.post('/', (req, res) => {
       res.status(500).json({ error: err.message });
     });
 });
-
-
-
-
-
 
 module.exports = router;
