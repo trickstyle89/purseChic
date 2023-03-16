@@ -13,11 +13,13 @@ router.get('/', (req, res) => {
   }
 
   favouritesQueries
-    .getFavourites()
+    .getFavourites(email)
     .then((favourites) => {
-      return res.render('checkout', { favourites, email })
+      return res.render('favourites', { favourites, email })
     })
-
+    .catch((err) => {
+      console.log(err.message);
+    });
 })
 
 
