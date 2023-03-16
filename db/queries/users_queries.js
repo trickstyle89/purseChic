@@ -53,7 +53,9 @@ const getUserByEmail = (email) => {
     SELECT *
     FROM users
     WHERE email = $1
-  `, [email]);
+  `, [email]).then((result) => {
+    return result.rows[0];
+  });
 }
 
 const getUserProducts = (email) => {

@@ -3,8 +3,16 @@ const db = require('../connection');
 // CREATE
 
 const addFavourite = (newFavourite) => {
-
-}
+  const {user_id, item_id} = newFavourite;
+  return db
+  .query(`
+  INSERT INTO favorites (user_id, item_id)
+  VALUES
+  ($1, $2)
+  RETURNING *;
+  `, [user_id, item_id])
+  .then((data) => data.rows)
+};
 
 // READ ALL
 const getFavourites = (email) => {
@@ -29,4 +37,4 @@ const deleteFavourite = (productID) => {
 
 }
 
-module.exports = { getFavourites };
+module.exports = { getFavourites, addFavourite};
