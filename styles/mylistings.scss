@@ -47,11 +47,11 @@ main {
   margin-top: 1rem;
 }
 
-.each:hover .buttons {
+.each:hover .buttons_page {
   opacity: 1;
 }
 
-.buttons {
+.buttons_page {
   position: absolute;
   bottom: 10px;
   left: 50%;
@@ -78,7 +78,7 @@ main {
   cursor: pointer;
 }
 
-.buttons {
+.buttons_page {
   margin-bottom: 20rem;
   display: flex;
 }
