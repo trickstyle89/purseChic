@@ -100,7 +100,7 @@ const filterFavorites = function(favorites) {
 
 
 
-module.exports = { getProducts, addProduct, filterPrice, filterFavorites, getProductById, updateProduct, deleteProduct };
+module.exports = { getProducts, addProduct, filterPrice, filterFavorites, getProductById, updateProduct, deleteProduct, getUserById };
 
 // be sure to run the seed file to populate you DB
 // console to see if this works at all Confirmed with CONSOLE.LOG on line 9.

@@ -22,6 +22,7 @@ router.post('/', (req, res) => {
     })
 });
 
+
 // add listing - this pulls up the form to add new listing
 router.get('/new', (req, res) => {
   const { email } = req.session;
@@ -32,7 +33,7 @@ router.get('/new', (req, res) => {
     return res.status(401).send('Please log in to add listing')
 
   }
-  res.render('add_listing', templateVars);
+  return res.render('add_listing', templateVars);
 });
 
 

@@ -39,17 +39,18 @@ const usersRouter = require('./routes/users_routes'); // working on this
 // CREATE NEW FILE TO EACH ROUTE AND CONNECT IT USING APP.USE
 // const addProductsRouter = require('./routes/add_listing_routes');
 const registerRouter = require('./routes/register_routes');
-const thankyouRouter = require('./routes/thank_you_routes')
+const thankyouRouter = require('./routes/thank_you_routes');
 const productsRouter = require('./routes/products_routes');
-const loginRouter = require('./routes/login_routes')
-const logoutRouter = require('./routes/logout_routes.js')
+const loginRouter = require('./routes/login_routes');
+const logoutRouter = require('./routes/logout_routes.js');
+const myListingsRouter = require('./routes/my_listings_routes.js');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 
 app.use('/login', loginRouter);
-app.use('/mylistings', productsRouter);
+app.use('/mylistings', myListingsRouter);
 app.use('/register', registerRouter);
 app.use('/thankyou', thankyouRouter);
 // app.use('/newlisting', addProductsRouter);

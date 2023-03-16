@@ -18,7 +18,7 @@ const userTest = () => {
     });
 };
 
-const addUser = function (users) {
+const addUser = function(users) {
   return db.query(`
   INSERT INTO users (first_name, last_name, email, password)
   VALUES ($1, $2, $3, $4)
@@ -34,7 +34,7 @@ const addUser = function (users) {
 };
 
 
-const checkUser = function (users) {
+const checkUser = function(users) {
   return db.query(`
   SELECT *
   FROM users
@@ -56,4 +56,19 @@ const getUserByEmail = (email) => {
     WHERE email = $1
   `, [email]);
 }
-module.exports = { getUsers, userTest, addUser, checkUser, getUserByEmail };
+
+const getUserProducts = (email) => {
+  return db.query(`
+  SELECT *
+  FROM products
+  JOIN users ON seller_id = users.id
+  WHERE users.email = $1
+  `, [email])
+    .then((result) => {
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+}
+module.exports = { getUsers, userTest, addUser, checkUser, getUserByEmail, getUserProducts };
