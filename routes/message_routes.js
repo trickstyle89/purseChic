@@ -29,7 +29,6 @@ router.get('/', (req, res) => {
     return messageQueries.findChatMessages(chatId, senderId);
   })
   .then((messages) => {
-    console.log('Message_routes line32', messages);
     const templateVars = {
       messages,
       email };
@@ -53,8 +52,8 @@ router.post('/', (req, res) => {
       chat_id = result.chat_id;
       return messageQueries.addMessage(sender_id, chat_id, message);
     })
-    .then(() => {  // async issue?
-      return messageQueries.findChatMessages(sender_id, chat_id);
+    .then(() => {
+      return messageQueries.findChatMessages(chat_id, sender_id);
     })
     .then(messages => {
       const templateVars = { messages, email };

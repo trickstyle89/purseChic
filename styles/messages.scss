@@ -32,7 +32,7 @@ main {
 }
 
 .messages_form input[type="text"] {
-  width: 80%;
+  width: 30em;
   padding: 10px;
   border: 2px black solid;
   margin-bottom: 10px;
@@ -50,6 +50,10 @@ main {
 
 li {
   list-style: none;
+}
+
+ul {
+  padding-right: 2em;
 }
 
 .message-inside {
