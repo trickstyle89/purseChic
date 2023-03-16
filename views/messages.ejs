@@ -27,11 +27,13 @@
   <%- include('./partials/_header') %>
     <div class="all-page">
       <main>
+        <h3 class="message-history-title">Your Message History</h3>
         <section>
           <ul>
             <% for(const message of messages) { %>
-              <li class="message-inside">
-                <p>Name: <%=message.first_name%>
+              <li class="message-inside <%= message.sender === 'User A' ? 'user-a' : 'user-b' %>">
+                <p name="username">
+                  <%=message.sender%>
                 </p>
                 <p>
                   <%= message.message_content %>
@@ -39,16 +41,16 @@
               </li>
               <% } %>
           </ul>
-
-          <p>the message from the sender</p>
+        <section/>
           <br>
           <form action="/messages" method="POST" class="messages_form">
             <div>
               <input type="text" name="message" />
-              <button>Send a new message button</button>
+              <br>
+              <button>Send Message</button>
             </div>
           </form>
-          <div>Div Line here</div>
+          <div></div>
       </main>
     </div>
     <footer>some info</footer>
