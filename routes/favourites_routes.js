@@ -34,11 +34,7 @@ router.post('/', (req, res) => {
       .catch((err) => {
         console.log(err.message);
       });
-
-
   })
-
-
 
 })
 
@@ -67,5 +63,38 @@ router.get('/', (req, res) => {
 
 
 //DELETE
+
+router.post('/remove', (req, res) => {
+  const { email } = req.session;
+
+  if (!email) {
+    return res.status(401).send('Please log in to view your favourite items')
+  }
+  userQueries
+  .getUserByEmail(email)
+  .then(user => {
+    if (!user) {
+      return res.status(401).send('User is not valid')
+    }
+
+    const {item_id} = req.body;
+      if (!item_id) {
+      return res.status(401).send('item_id is not valid')
+      }
+
+      const oldFav = {
+        email, item_id
+      }
+
+      favouritesQueries
+      .deleteFavourite(oldFav)
+      .then(() => {
+        return res.redirect('/favourites');
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  })
+})
 
 module.exports = router;

@@ -38,7 +38,10 @@
               <%= favourite.description%>
             </p>
             <div class="buttons_page">
-              <button class="delete-button">Delete</button>
+              <form method="POST" action = "/favourites/remove">
+              <button type="submit" class="delete-button">Delete</button>
+              <input name="item_id" value="<%=favourite.id%>" hidden/>
+              </form>
             </div>
           </div>
           <% } %>
