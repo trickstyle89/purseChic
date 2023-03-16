@@ -52,6 +52,7 @@ const updateProduct = (updatedProduct) => {
 };
 
 //DELETE
+
 const deleteProduct = (productID) => {
   return db
     .query('DELETE FROM products WHERE id = $1', [productID])
