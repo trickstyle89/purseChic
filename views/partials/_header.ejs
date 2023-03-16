@@ -18,51 +18,49 @@
               aria-expanded="false"
             >
               Listings
+              <i class="fa fa-caret-down"></i>
             </a>
+
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="/mylistings">My Listings</a>
               <a class="dropdown-item" href="/mylistings/new">Add Listing</a>
+            </div>
           </li>
-          <!-- <li>
-            <a href="/mylistings">My Listings</a>
-          </li> -->
           <li>
             <a href="/collection">Shop Collection</a>
           </li>
           <li>
             <a href="/messages">Messages</a>
           </li>
-          <!-- <li>
-            <a href="/mylistings/new">Add Listing</a>
-          </li> -->
-
-
-          <!-- <li class="nav-item dropdown">
-            <a href="#"> Listings </a>
-            <div class="dropdown-menu">
-              <a href="/mylistings">My Listings</a>
-              <a href="/mylistings/new">Add Listing</a>
-            </div>
-          </li> -->
         </ul>
         <% if(!email){ %>
-        <form action="/login" method="get">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">Sign Up</a></li>
+          <a href="/checkout">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </a>
+        </ul>
+
+        <!-- <form action="/login" method="get">
           <button class="navbar-header buttons">Login</button>
         </form>
         <form action="/register" method="GET">
           <button class="navbar-header buttons">Sign Up</button>
-        </form>
+        </form> -->
+
         <% } else {%>
-        <form action="/logout" method="POST">
-          <span>Logged in as:<%= email %></span>
-          <button class="navbar-header buttons">logout</button>
+        <form action="/logout" method="POST" class="form-inline">
+          <div>
+            <!-- Hello, <%= email %> -->
+            <a href="/checkout">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+            <!-- <span>Logged in as:<%= email %></span> -->
+            <button class="navbar-header buttons">Logout</button>
+          </div>
         </form>
         <% } %>
-        <i class="fa-solid fa-cart-shopping"></i>
-        <!-- <ul class="nav navbar-nav navbar-right">
-              <li><a href="/login">Login</a></li>
-              <li><a href="/register">Sign Up</a></li>
-            </ul> -->
       </div>
     </div>
   </nav>
