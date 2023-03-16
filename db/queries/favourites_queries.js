@@ -33,8 +33,16 @@ const getFavourites = (email) => {
 
 //DELETE
 
-const deleteFavourite = (productID) => {
+const deleteFavourite = (deleteFav) => {
+  const {email, item_id} = deleteFav;
+  return db
+    .query
+    (`
+    DELETE FROM favorites
+    WHERE user_id = (SELECT id FROM users WHERE email = $1)
+    AND item_id = $2;
+    `, [email, item_id])
+};
 
-}
 
-module.exports = { getFavourites, addFavourite};
+module.exports = { getFavourites, addFavourite, deleteFavourite};
