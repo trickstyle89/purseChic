@@ -4,8 +4,7 @@ const getAllMessages = () => {
   return db.query(`
   SELECT *
   FROM messages
-  JOIN users ON sender_id = users.id
-  LIMIT 2;
+  JOIN users ON sender_id = users.id;
   `)
     .then(data => {
       return data.rows;
@@ -43,7 +42,6 @@ const addMessage = function (sender_id, chat_id, message_content) {
       console.log(err.message);
     });
 };
-
 
 const findChatMessages = function (chatId, userId) {
   return db.query(`

@@ -19,40 +19,17 @@ router.use((req, res, next) => {
   }
 });
 
-/*
-router.get('/', (req, res) => {
-  const email = req.session.email;
-  let chatData;
-
-  // finds the chat.it and sender.id for the user from cookie.
-  messageQueries.findChatData(email)
-    .then(result => {
-      chatData = result;
-      return messageQueries.getAllMessages();
-    })
-    .then(messages => {
-      const templateVars = { messages, email };
-      res.render('messages', templateVars);
-    })
-    .catch(err => {
-      res.status(500).json({ error: err.message });
-    });
-});
-*/
-
 router.get('/', (req, res) => {
   const email = req.session.email;
   messageQueries.findChatData(email)
   .then((chatData) => {
-    console.log('line47', chatData);
+
     const chatId = chatData.chat_id;
     const senderId = chatData.sender_id;
-    console.log('line50', chatId);
-    console.log('line51', chatId);
     return messageQueries.findChatMessages(chatId, senderId);
   })
   .then((messages) => {
-    console.log(messages);
+    console.log('Message_routes line32', messages);
     const templateVars = {
       messages,
       email };
@@ -68,15 +45,16 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const { message } = req.body;
   const email = req.session.email;
-
+  let sender_id;
+  let chat_id;
   messageQueries.findChatData(email)
     .then(result => {
-      const sender_id = result.sender_id;
-      const chat_id = result.chat_id;
+      sender_id = result.sender_id;
+      chat_id = result.chat_id;
       return messageQueries.addMessage(sender_id, chat_id, message);
     })
-    .then(() => {
-      return messageQueries.getAllMessages(); // fetch all the messages from the database
+    .then(() => {  // async issue?
+      return messageQueries.findChatMessages(sender_id, chat_id);
     })
     .then(messages => {
       const templateVars = { messages, email };
@@ -86,7 +64,5 @@ router.post('/', (req, res) => {
       res.status(500).json({ error: err.message });
     });
 });
-
-
 
 module.exports = router;
