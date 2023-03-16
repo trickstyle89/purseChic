@@ -51,6 +51,7 @@ const myListingsRouter = require('./routes/my_listings_routes.js');
 
 app.use('/login', loginRouter);
 app.use('/mylistings', myListingsRouter);
+app.use('/mylistings', productsRouter);
 app.use('/register', registerRouter);
 app.use('/thankyou', thankyouRouter);
 // app.use('/newlisting', addProductsRouter);

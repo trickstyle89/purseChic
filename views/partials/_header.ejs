@@ -7,10 +7,43 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li><a href="/mylistings">My Listings</a></li>
-          <li><a href="/collection">Shop Collection</a></li>
-          <li><a href="/messages">Messages</a></li>
-          <li><a href="/mylistings/new">Add Listing</a></li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Listings
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/mylistings">My Listings</a>
+              <a class="dropdown-item" href="/mylistings/new">Add Listing</a>
+          </li>
+          <!-- <li>
+            <a href="/mylistings">My Listings</a>
+          </li> -->
+          <li>
+            <a href="/collection">Shop Collection</a>
+          </li>
+          <li>
+            <a href="/messages">Messages</a>
+          </li>
+          <!-- <li>
+            <a href="/mylistings/new">Add Listing</a>
+          </li> -->
+
+
+          <!-- <li class="nav-item dropdown">
+            <a href="#"> Listings </a>
+            <div class="dropdown-menu">
+              <a href="/mylistings">My Listings</a>
+              <a href="/mylistings/new">Add Listing</a>
+            </div>
+          </li> -->
         </ul>
         <% if(!email){ %>
         <form action="/login" method="get">
