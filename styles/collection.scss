@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 10rem;
+  padding: 2rem;
+}
+
+.all-products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.each {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 1rem;
+  width: calc(50% - 20px);
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.each:hover {
+  transform: translateY(-5px);
+}
+
+.each p {
+  margin-top: 1rem;
+}
+
+.each:hover .buttons_page {
+  opacity: 1;
+}
+
+.buttons_page {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.add-to-list-button {
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-to-fav-button {
+  background-color: #a82222;
+  color: #fff;
+  font-size: 2.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buttons_page {
+  margin-bottom: 20rem;
+  display: flex;
+}
+
+.bag-img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 200px;
+}
+
+.price-img {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.fa-heart {
+  padding: 0 1rem;
+}
