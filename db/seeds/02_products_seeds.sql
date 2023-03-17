@@ -16,13 +16,13 @@ VALUES
   'Louis Vuitton Red Epi Leather Segur PM Handbag ', 2, 1696 ,'The Louis Vuitton Red Epi Leather Segur PM Bag features durable Epi leather with a gorgeous silvertone metal push-lock securing its flap closure. This PM size is the smaller size of the Segur family, which features double rolled handles and a rear slip pocket.', './images/item5.png', FALSE
   ),
 (
-  'Fendi Brown & Black Leather Runaway Bag', 1, 2049,'Brown leather Fendi Runaway bag with black leather trim. This bag was first seen on the Fall Winter 2017 runway and has a very straightforward and modern look with the trapezoid shape. The short & removable black leather top handle strap features the Fendi reversed ‘F’ signature logo hardware.', './images/item6.png', TRUE
+  'Fendi Brown & Black Leather Runaway Bag', 1, 2049,'Brown leather Fendi Runaway bag with black leather trim. This bag was first seen on the Fall Winter 2017 runway and has a very straightforward and modern look with the trapezoid shape. The short & removable black leather top handle strap features the Fendi reversed ‘F’ signature.', './images/item6.png', TRUE
   ),
 (
   'Louis Vuitton Indigo Coquelicot Leather Blue Twist Tote', 1, 1200,'This tote is crafted of textured epi leather in dark blue. The handbag features red glazing trim, contrasting yellow stitching, adjustable leather side straps, and polished silver hardware including a frontal LV turn lock. Dual top handles and an adjustable shoulder strap.', './images/item7.png', FALSE
   ),
 (
-  'Chanel Classic Double Flap Bag', 2, 11306,'This classic model nicknamed the Diana is constructed of supple diamond-quilted lambskin leather in pink. The shoulder bag features a waist-length polished gold chain-link and leather shoulder strap, Chanel CC turn lock closure on front flap and a burgundy leather interior with zipper.', './images/item8.png' , FALSE
+  'Chanel Classic Double Flap Bag', 2, 11306,'This classic model nicknamed the Diana is constructed of supple diamond-quilted lambskin leather in pink. The shoulder bag features a waist-length polished gold chain-link and leather shoulder strap, Chanel CC turn lock closure on front flap.', './images/item8.png' , FALSE
   );
 
 
