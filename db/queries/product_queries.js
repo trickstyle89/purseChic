@@ -23,11 +23,19 @@ const addProduct = (newProduct) => {
     });
 };
 
-// Filter price of item
+// Filter price of item low to high
 const filterProducts = () => {
   return db
     .query(`SELECT * FROM products
   ORDER BY PRICE;`)
+    .then((data) => data.rows)
+}
+
+// Filter price of item high to low
+const filterProductsHighToLow = () => {
+  return db
+    .query(`SELECT * FROM products
+  ORDER BY PRICE DESC;`)
     .then((data) => data.rows)
 }
 
@@ -107,7 +115,7 @@ const filterFavorites = function(favorites) {
 };
 
 
-module.exports = { getProducts, addProduct, filterPrice, filterFavorites, getProductById, updateProduct, deleteProduct, getUserById, filterProducts };
+module.exports = { getProducts, addProduct, filterPrice, filterFavorites, getProductById, updateProduct, deleteProduct, getUserById, filterProducts, filterProductsHighToLow };
 
 // be sure to run the seed file to populate you DB
 // console to see if this works at all Confirmed with CONSOLE.LOG on line 9.

@@ -46,6 +46,7 @@ const logoutRouter = require('./routes/logout_routes.js');
 const myListingsRouter = require('./routes/my_listings_routes.js');
 const favouritesRouter = require('./routes/favourites_routes');
 const filtersRouter = require('./routes/filters_routes')
+const filtersRouter2 = require('./routes/filters2_routes')
 
 
 // Mount all resource routes
@@ -62,6 +63,7 @@ app.use('/messages', messagesRouter);
 app.use('/logout', logoutRouter);
 app.use('/favourites', favouritesRouter);
 app.use('/filter', filtersRouter)
+app.use('/filter2', filtersRouter2)
 
 //testing for collections page and mylistings stuff
 
