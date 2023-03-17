@@ -115,9 +115,6 @@ const productSold = function(id) {
 
   const { productSoldId } = id;
 
-  console.log('line 116 id', id);
-  //const { id } = soldItem;
-
   return db.query(`
   UPDATE products
   SET sold = NOT sold
