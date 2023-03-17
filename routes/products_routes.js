@@ -119,5 +119,35 @@ router.post('/removelistings', (req, res) => {
 });
 
 
+// Toggle SOLD BOOLEAN
+
+router.post('/sold', (req, res) => {
+
+  const { email } = req.session;
+  const id = req.body;
+  console.log('line 128  id', id);
+
+  if (!email) {
+    return res.status(401).send('Please log in to delete listing')
+    // we can use template var to return error message
+  }
+  userQueries
+    .getUserByEmail(email)
+    .then((user) => {
+      if (!user) {
+        return res.status(401).send('User is not valid')
+      }
+      if (!id) {
+        return res.status(401).send('productID is not valid')
+      }
+
+      productQueries
+        .productSold(id)
+        .then((productSold) => {
+          return res.redirect('/mylistings')
+        })
+    })
+});
+
 
 module.exports = router;

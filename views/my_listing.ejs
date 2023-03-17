@@ -42,7 +42,10 @@
           <h5 class="monospace-price">$<%= product.price %>.00</h5>
           <p class="monospace"><%= product.description %></p>
           <div class="buttons_page">
+          <form method="POST" action="/mylistings/sold">
+            <input type="hidden" name="productSoldId" value="<%= product.id %>" />
             <button class="edit-button">Sold</button>
+          </form>
             <form method="POST" action="/mylistings/removelistings">
               <input type="hidden" name="productId" value="<%= product.id %>" />
               <button type="submit">Delete</button>
