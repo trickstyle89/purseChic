@@ -44,7 +44,6 @@
           <div class="buttons_page">
             <button class="edit-button">Sold</button>
             <form method="POST" action="/mylistings/removelistings">
-              <input type="hidden" name="_method" value="DELETE" />
               <input type="hidden" name="productId" value="<%= product.id %>" />
               <button type="submit">Delete</button>
             </form>

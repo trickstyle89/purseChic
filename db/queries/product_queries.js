@@ -69,21 +69,17 @@ const updateProduct = (updatedProduct) => {
 
 //DELETE
 
-// const deleteProduct = (email, id) => {
-//   // const { email, id } = deletedItem
-//   // console.log('line 58 products queires', deletedItem)
+const deleteProduct = (deletedItem) => {
+  const { email, id: { productId } } = deletedItem;
 
-//   return db
-//     .query(`
-//     DELETE FROM products
-//     WHERE seller_id = (SELECT id FROM users WHERE email = $1)
-//     AND products.id = $2 `,
-//       [email, id])
-// }
-
-function deleteProduct(productId) {
-  return db.none('DELETE FROM products WHERE id = $1', [productId]);
+  return db
+    .query(`
+    DELETE FROM products
+    WHERE seller_id = (SELECT id FROM users WHERE email = $1)
+    AND products.id = $2 `,
+      [email, productId])
 }
+
 
 // A simple filter for price. *** Not tested ***
 const filterPrice = function(minPrice, maxPrice) {

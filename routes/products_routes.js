@@ -11,9 +11,7 @@ const userQueries = require('../db/queries/users_queries');
 router.post('/', (req, res) => {
   const { email } = req.session;
   const { title, price, description, product_photo } = req.body;
-  // console.log(req)
-  console.log(req.session)
-  console.log(req.body)
+
 
   if (!email) {
     return res.status(401).send('Please log in to add listing')
@@ -71,7 +69,7 @@ router.get('/:id', (req, res) => {
 //Update - put or post
 router.post('/:id/edit', (req, res) => {
   const { email } = req.session;
-  const { productID } = req.body;
+  const { productID } = req.body.productId;
 
   if (!email) {
     return res.status(401).send('Please log in to edit listing')
@@ -86,48 +84,39 @@ router.post('/:id/edit', (req, res) => {
     })
 });
 
+
+
 // Delete - delete or post
-// router.post('/removelisting', (req, res) => {
+router.post('/removelistings', (req, res) => {
 
-//   const { email } = req.session;
-//   const productID = req.body;
+  const { email } = req.session;
+  const id = req.body;
 
+  if (!email) {
+    return res.status(401).send('Please log in to delete listing')
+    // we can use template var to return error message
+  }
+  userQueries
+    .getUserByEmail(email)
+    .then((user) => {
+      if (!user) {
+        return res.status(401).send('User is not valid')
+      }
+      if (!id) {
+        return res.status(401).send('productID is not valid')
+      }
 
-//   if (!email) {
-//     return res.status(401).send('Please log in to delete listing')
-//     // we can use template var to return error message
-//   }
-//   userQueries
-//     .getUserByEmail(email)
-//     .then((user) => {
-//       if (!user) {
-//         return res.status(401).send('User is not valid')
-//       }
-//       console.log('line 106 from product routes', productID)
-//       if (!productID) {
-//         return res.status(401).send('productID is not valid')
-//       }
+      const deletedItem = {
+       email, id
+      }
 
-//       // const deletedItem = {
-//       //  email, productID
-//       //}
-
-//       // const { email, productID } = templateVars;
-//       // const { item_id } = productID;
-//       console.log('line 117 item_id', item_id)
-//       console.log('line 118', deletedItem)
-
-//       //const { item_id } = productID;
-
-//       console.log('line 114 from product routes', email, productID)
-//       productQueries
-//         .deleteProduct(deletedItem)
-//         .then((products) => {
-//           console.log('from product routes line 104', products);
-//           return res.redirect('/mylistings')
-//         })
-//     })
-// });
+      productQueries
+        .deleteProduct(deletedItem)
+        .then((products) => {
+          return res.redirect('/mylistings')
+        })
+    })
+});
 
 
 
