@@ -3,67 +3,99 @@
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="/">purschic</a>
+        <a
+          class="navbar-brand"
+          style="font-weight: 600; font-size: 2.5rem"
+          href="/"
+          >PURSCHIC</a
+        >
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Listings
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              style="font-weight: 600"
+            >
+              LISTINGS
               <i class="fa fa-caret-down"></i>
             </a>
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/mylistings">My Listings</a>
-              <a class="dropdown-item" href="/mylistings/new">Add Listing</a>
+              <a
+                class="dropdown-item"
+                href="/mylistings "
+                style="font-weight: 600"
+                >MY LISTINGS</a
+              >
+              <br></br>
+              <a
+                class="dropdown-item"
+                href="/mylistings/new"
+                style="font-weight: 600"
+                >ADD LISTINGS</a
+              >
             </div>
           </li>
           <li>
-            <a href="/collection">Shop Collection</a>
+            <a href="/collection" style="font-weight: 600">SHOP COLLECTION</a>
           </li>
           <li>
-            <a href="/messages">Messages</a>
+            <a href="/messages" style="font-weight: 600">MESSAGES</a>
           </li>
         </ul>
         <% if(!email){ %>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Sign Up</a></li>
-            <li>
-              <a href="/favourites">
-                <i class="fa-solid fa-heart"></i>
-              </a>
-            </li>
-            <li>
-              <a href="/checkout">
-                <i class="fa-sharp fa-solid fa-bag-shopping"></i>
-              </a>
-            </li>
-          </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/login" style="font-weight: 600">LOGIN</a></li>
+          <li><a href="/register" style="font-weight: 600">SIGN UP</a></li>
+          <li>
+            <a href="/favourites">
+              <i class="fa-solid fa-heart"></i>
+            </a>
+          </li>
+          <li>
+            <a href="/checkout">
+              <i class="fa-sharp fa-solid fa-bag-shopping"></i>
+            </a>
+          </li>
+        </ul>
 
-          <% } else {%>
-            <form action="/logout" method="POST" class="form-inline">
-              <div>
-                <ul class="nav navbar-nav navbar-right">
-                  <li>
-                    <a href="/favourites">
-                      <i class="fa-solid fa-heart"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/checkout">
-                      <i class="fa-sharp fa-solid fa-bag-shopping"></i>
-                    </a>
-                  </li>
-                  <button class="navbar-header buttons logout-button" style="background-color: transparent;
-              border: none;
-              margin-top: 1.3rem;
-              color: #747777;">Logout</button>
-                </ul>
-              </div>
-            </form>
-            <% } %>
+        <% } else {%>
+        <form action="/logout" method="POST" class="form-inline">
+          <div>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="/favourites">
+                  <i class="fa-solid fa-heart"></i>
+                </a>
+              </li>
+              <li>
+                <a href="/checkout">
+                  <i class="fa-sharp fa-solid fa-bag-shopping"></i>
+                </a>
+              </li>
+              <button
+                class="navbar-header buttons logout-button"
+                style="
+                  background-color: transparent;
+                  border: none;
+                  margin-top: 1.3rem;
+                  color: #747777;
+                  font-weight: 600;
+                "
+              >
+                LOGOUT
+              </button>
+            </ul>
+          </div>
+        </form>
+        <% } %>
       </div>
     </div>
   </nav>
