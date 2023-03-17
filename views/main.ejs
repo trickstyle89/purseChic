@@ -25,10 +25,13 @@
 <body>
   <%- include('./partials/_header') %>
     <main>
-      <div>
-        <a href="/filter"><i class="fa-solid fa-arrow-down-short-wide"></i></a>
-        <a href="/filter2"><i class="fa-solid fa-arrow-up-short-wide"></i></a>
-        <section class="all-products">
+      <div class="filters-p">
+        <p>PURSE COLLECTION</p>
+        <div class="filters">
+          <a href="/filter"><i class="fa-solid fa-arrow-down-short-wide"></i></a>
+          <a href="/filter2"><i class="fa-solid fa-arrow-up-short-wide"></i></a>
+          <section class="all-products">
+        </div>
       </div>
       <section class="all-products">
         <% for(const product of products) { %>
@@ -44,9 +47,9 @@
               </p>
               <div class="buttons_page">
                 <button class="add-to-list-button"><i class="fa-solid fa-cart-shopping"></i></button>
-                <form method="POST" action = "/favourites">
-                  <input name="item_id" value="<%=product.id%>" hidden/>
-                <button class="add-to-fav-button"><i class="fa-solid fa-heart"></i></button>
+                <form method="POST" action="/favourites">
+                  <input name="item_id" value="<%=product.id%>" hidden />
+                  <button class="add-to-fav-button"><i class="fa-solid fa-heart"></i></button>
                 </form>
               </div>
             </div>

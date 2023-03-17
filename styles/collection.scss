@@ -17,7 +17,7 @@ body {
 main {
   max-width: 1200px;
   margin: 0 auto;
-  margin-top: 10rem;
+  margin-top: 6rem;
   padding: 2rem;
 }
 
@@ -78,7 +78,7 @@ main {
   background-color: #a82222;
   color: #fff;
   font-size: 2.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.9rem 1rem;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -104,4 +104,20 @@ main {
 
 .fa-heart {
   padding: 0 1rem;
+}
+
+.filters-p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filters-p p {
+  font-size: 3.2rem;
+  margin-left: 1.3rem;
+  font-weight: 600;
+}
+
+.filters {
+  font-size: 2.5rem;
+  margin: 1rem 2rem 1rem 0;
 }

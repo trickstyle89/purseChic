@@ -14,7 +14,7 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles/forms.css" />
-  <link rel="stylesheet" href="/styles/mylistings.css" />
+  <link rel="stylesheet" href="/styles/favorites.css" />
 
   <!-- fontAwesome -->
   <script src="https://kit.fontawesome.com/0721b3d140.js" crossorigin="anonymous"></script>
@@ -26,6 +26,7 @@
 <body>
   <%- include('./partials/_header') %>
     <main>
+      <p class="my-favourites-p">MY FAVOURITES</p>
       <section class="all-products">
         <%for(const favourite of favourites) { %>
           <div class="each">
@@ -38,9 +39,9 @@
               <%= favourite.description%>
             </p>
             <div class="buttons_page">
-              <form method="POST" action = "/favourites/remove">
-              <button type="submit" class="delete-button">Delete</button>
-              <input name="item_id" value="<%=favourite.id%>" hidden/>
+              <form method="POST" action="/favourites/remove">
+                <button type="submit" class="delete-button">Remove</button>
+                <input name="item_id" value="<%=favourite.id%>" hidden />
               </form>
             </div>
           </div>
