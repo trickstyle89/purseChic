@@ -60,7 +60,7 @@ const getUserByEmail = (email) => {
 
 const getUserProducts = (email) => {
   return db.query(`
-  SELECT *
+  SELECT products.*
   FROM products
   JOIN users ON seller_id = users.id
   WHERE users.email = $1
@@ -72,4 +72,6 @@ const getUserProducts = (email) => {
       console.log(err.message);
     });
 }
+
+
 module.exports = { getUsers, userTest, addUser, checkUser, getUserByEmail, getUserProducts };

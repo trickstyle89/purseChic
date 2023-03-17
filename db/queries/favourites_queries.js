@@ -3,15 +3,16 @@ const db = require('../connection');
 // CREATE
 
 const addFavourite = (newFavourite) => {
-  const {user_id, item_id} = newFavourite;
+  const { user_id, item_id } = newFavourite;
+
   return db
-  .query(`
+    .query(`
   INSERT INTO favorites (user_id, item_id)
   VALUES
   ($1, $2)
   RETURNING *;
   `, [user_id, item_id])
-  .then((data) => data.rows)
+    .then((data) => data.rows)
 };
 
 // READ ALL
@@ -34,7 +35,8 @@ const getFavourites = (email) => {
 //DELETE
 
 const deleteFavourite = (deleteFav) => {
-  const {email, item_id} = deleteFav;
+  const { email, item_id } = deleteFav;
+  console.log('line 38 from favoruites_queries', deleteFav)
   return db
     .query
     (`
@@ -45,4 +47,4 @@ const deleteFavourite = (deleteFav) => {
 };
 
 
-module.exports = { getFavourites, addFavourite, deleteFavourite};
+module.exports = { getFavourites, addFavourite, deleteFavourite };

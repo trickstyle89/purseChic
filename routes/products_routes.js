@@ -2,9 +2,9 @@
 
 const express = require('express');
 const router = express.Router();
-// const db = require('../db/connection');
 const productQueries = require('../db/queries/product_queries');
 const { getUserByEmail } = require('../db/queries/users_queries');
+const userQueries = require('../db/queries/users_queries');
 
 // CRUD
 //Create - post
@@ -71,7 +71,7 @@ router.get('/:id', (req, res) => {
 //Update - put or post
 router.post('/:id/edit', (req, res) => {
   const { email } = req.session;
-  const productID = req.params.id;
+  const { productID } = req.body;
 
   if (!email) {
     return res.status(401).send('Please log in to edit listing')
@@ -86,22 +86,49 @@ router.post('/:id/edit', (req, res) => {
     })
 });
 
-//Delete - delete or post
-router.post('/:id/delete', (req, res) => {
-  const { email } = req.session;
-  const productID = req.params.id;
+// Delete - delete or post
+// router.post('/removelisting', (req, res) => {
 
-  if (!email) {
-    return res.status(401).send('Please log in to delete listing')
-    // we can use template var to return error message
-  }
-  productQueries
-    .deleteProduct()
-    .then((products) => {
-      console.log('from product routes line 21', products);
-      return res.redirect('my_listing')
-    })
-});
+//   const { email } = req.session;
+//   const productID = req.body;
+
+
+//   if (!email) {
+//     return res.status(401).send('Please log in to delete listing')
+//     // we can use template var to return error message
+//   }
+//   userQueries
+//     .getUserByEmail(email)
+//     .then((user) => {
+//       if (!user) {
+//         return res.status(401).send('User is not valid')
+//       }
+//       console.log('line 106 from product routes', productID)
+//       if (!productID) {
+//         return res.status(401).send('productID is not valid')
+//       }
+
+//       // const deletedItem = {
+//       //  email, productID
+//       //}
+
+//       // const { email, productID } = templateVars;
+//       // const { item_id } = productID;
+//       console.log('line 117 item_id', item_id)
+//       console.log('line 118', deletedItem)
+
+//       //const { item_id } = productID;
+
+//       console.log('line 114 from product routes', email, productID)
+//       productQueries
+//         .deleteProduct(deletedItem)
+//         .then((products) => {
+//           console.log('from product routes line 104', products);
+//           return res.redirect('/mylistings')
+//         })
+//     })
+// });
+
 
 
 module.exports = router;

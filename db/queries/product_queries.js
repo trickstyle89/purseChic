@@ -23,6 +23,14 @@ const addProduct = (newProduct) => {
     });
 };
 
+// Filter price of item
+const filterProducts = () => {
+  return db
+    .query(`SELECT * FROM products
+  ORDER BY PRICE;`)
+    .then((data) => data.rows)
+}
+
 //READ ALL
 const getProducts = () => {
   return db
@@ -53,10 +61,20 @@ const updateProduct = (updatedProduct) => {
 
 //DELETE
 
-const deleteProduct = (productID) => {
-  return db
-    .query('DELETE FROM products WHERE id = $1', [productID])
-    .then((data) => data.rows)
+// const deleteProduct = (email, id) => {
+//   // const { email, id } = deletedItem
+//   // console.log('line 58 products queires', deletedItem)
+
+//   return db
+//     .query(`
+//     DELETE FROM products
+//     WHERE seller_id = (SELECT id FROM users WHERE email = $1)
+//     AND products.id = $2 `,
+//       [email, id])
+// }
+
+function deleteProduct(productId) {
+  return db.none('DELETE FROM products WHERE id = $1', [productId]);
 }
 
 // A simple filter for price. *** Not tested ***
@@ -89,7 +107,7 @@ const filterFavorites = function(favorites) {
 };
 
 
-module.exports = { getProducts, addProduct, filterPrice, filterFavorites, getProductById, updateProduct, deleteProduct, getUserById };
+module.exports = { getProducts, addProduct, filterPrice, filterFavorites, getProductById, updateProduct, deleteProduct, getUserById, filterProducts };
 
 // be sure to run the seed file to populate you DB
 // console to see if this works at all Confirmed with CONSOLE.LOG on line 9.
