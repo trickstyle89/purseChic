@@ -110,8 +110,26 @@ const filterFavorites = function(favorites) {
     });
 };
 
+// toggle sold button
+const productSold = function(id) {
 
-module.exports = { getProducts, addProduct, filterPrice, filterFavorites, getProductById, updateProduct, deleteProduct, getUserById, filterProducts, filterProductsHighToLow };
+  const { productSoldId } = id;
+
+  return db.query(`
+  UPDATE products
+  SET sold = NOT sold
+  WHERE id = $1;
+    `, [productSoldId])
+    .then((result) => {
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+
+module.exports = { getProducts, addProduct, filterPrice, filterFavorites, getProductById, updateProduct, deleteProduct, getUserById, filterProducts, filterProductsHighToLow, productSold };
 
 // be sure to run the seed file to populate you DB
 // console to see if this works at all Confirmed with CONSOLE.LOG on line 9.

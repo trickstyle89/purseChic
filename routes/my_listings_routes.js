@@ -47,7 +47,7 @@ router.get('/', (req, res) => {
       return res.render('my_listing', { email, products })
     })
 });
-
+/*
 router.delete('/:id', function(req, res) {
   const productId = req.params.id;
   userQueries.deleteProduct(productId)
@@ -60,5 +60,5 @@ router.delete('/:id', function(req, res) {
       res.status(500).send('Failed to delete product');
     });
 });
-
+*/
 module.exports = router;
