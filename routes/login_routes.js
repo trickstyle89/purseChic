@@ -25,10 +25,10 @@ router.post('/', (req, res) => {
         // Set a value in the session cookie:
         req.session.email = email;
         res.redirect('/collection');
-      } else {
-        console.log('Invalid login credentials');
-        return res.redirect('/login');
-      }
+//      } else {
+//        console.log('Invalid login credentials');
+//        return res.redirect('/login');
+//      }
     })
     .catch((error) => {
       console.error(error);
