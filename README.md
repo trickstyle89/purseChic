@@ -4,7 +4,16 @@
 
 ## Product Demo
 
-PICTURES + VIDEO WILL GO HERE
+- Welcome to **purschic**! Here you will find all you need to buy/sell luxury handbags.
+  ![Homepage](https://github.com/mrludovicc/store_name/blob/master/public/docs/homepage.png?raw=true)
+- At **purschic** you can easily upload listings. Users must have a registered account to post new listings.
+  ![Add Listings Page](https://github.com/mrludovicc/store_name/blob/master/public/docs/addListing.png?raw=true)
+- Scroll to see the selection of handbags! When new listings are posted, they will appear on this page. Similarly, when items have sold, they will no longer appear on our collection page. Users do not need to be logged in to view our selection.
+  ![Featured Items Page](https://github.com/mrludovicc/store_name/blob/master/public/docs/featured.png?raw=true)
+- Not ready to buy? That's ok! Add to your favourites and come back at a later time. Not feeling it anymore? Easily manage your favourites and delete from your profile! Users must have a registered account to add listings to their favourites.
+  ![Favourites Page](https://github.com/mrludovicc/store_name/blob/master/public/docs/favorites.png?raw=true)
+- Sometimes we need more information before splurging. That's where our direct messaging feature comes into play! Easily message sellers and ask all the questions you desire. Sellers can respond with ease. Users must have a registered account to message sellers/buyers.
+  ![Messages Page](https://github.com/mrludovicc/store_name/blob/master/public/docs/messages.png?raw=true)
 
 ## Getting Started
 
@@ -97,12 +106,13 @@ $ npm run local
 
 ## ERD Schema
 
-## Features
+- Schema demonstrating entity types and relationships between entities.
+  ![](https://github.com/mrludovicc/store_name/blob/master/public/docs/ERD.png?raw=true)
 
 ## Team
 
-[Ivan Chew](https://github.com/trickstyle89)
-[Nabeel Alabed](https://github.com/mrludovicc)
+[Ivan Chew](https://github.com/trickstyle89)\
+[Nabeel Alabed](https://github.com/mrludovicc)\
 [Lupita Reyes](https://github.com/lupitareyess)
 
 ## Warnings & Tips
